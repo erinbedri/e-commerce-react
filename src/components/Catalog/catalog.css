@@ -24,6 +24,10 @@
     align-items: center;
 }
 
+#catalog .catalog-link {
+    text-decoration: none;
+}
+
 #catalog .catalog-item > img {
     width: 90px;
     height: 60px;

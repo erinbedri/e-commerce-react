@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
 
 import Header from "./components/Header/Header";
@@ -14,11 +16,18 @@ function App() {
             <Header />
 
             <main>
-                <Catalog />
-                <CarDetails />
-                <CarAdd />
-                <Login />
-                <Register />
+                <Routes>
+                    <Route path="/" element={<Catalog />} />
+
+                    <Route path="/catalog" element={<Catalog />} />
+                    <Route
+                        path="/catalog/:carId/details"
+                        element={<CarDetails />}
+                    />
+                    <Route path="/catalog/car/add" element={<CarAdd />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Routes>
             </main>
 
             <Footer />

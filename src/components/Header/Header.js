@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./header.css";
 
@@ -7,12 +8,13 @@ export default function Header() {
         <header id="header" className="container">
             <div className="header-wrapper">
                 <div className="header-logo">
-                    <a href="#">
+                    <Link to="/">
                         <h1>
                             C <i className="fa-solid fa-car" /> RS
                         </h1>
-                    </a>
+                    </Link>
                 </div>
+
                 {/*
                 <div class="header-nav">
                     <a href="#"><span>ALL</span></a>
@@ -20,18 +22,21 @@ export default function Header() {
                     <a href="#"><span>WOMEN</span></a>
                 </div>
                 */}
+
                 <div className="header-controls">
                     {/* Logged in user */}
-                    <a href="#">
+                    <Link to="#">
                         <i className="fa-solid fa-heart" />
-                    </a>
-                    <a href="#">
+                    </Link>
+                    <Link to="#">
                         <i className="fa-solid fa-user" />
-                    </a>
-                    <a href="#">Logout</a>
+                    </Link>
+                    <Link to="/catalog/car/add">Add Car</Link>
+                    <Link to="#">Logout</Link>
+
                     {/* Logged out user */}
-                    <a href="#">Sign In</a>
-                    <a href="#">Sign Up</a>
+                    <Link to="/login">Sign In</Link>
+                    <Link to="/register">Sign Up</Link>
                 </div>
             </div>
         </header>

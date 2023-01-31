@@ -1,11 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./register.css";
+import * as authService from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        email: "",
+        fname: "",
+        lname: "",
+        telNumber: "",
+        password: "",
+        repeatPassword: "",
+    });
+
+    const [error, setError] = useState("");
+
+    const changeHandler = (e) => {
+        setFormData((oldData) => ({
+            ...oldData,
+            [e.target.name]:
+                e.target.type == "checkbox" ? e.target.checked : e.target.value,
+        }));
+    };
+
+    const isFormValid =
+        formData.email &&
+        formData.fname &&
+        formData.lname &&
+        formData.telNumber &&
+        formData.password &&
+        formData.repeatPassword;
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        if (formData.password != formData.repeatPassword) {
+            setError("Passwords do not match!");
+            return;
+        }
+
+        if (isFormValid) {
+            authService
+                .register(
+                    formData.email,
+                    formData.password,
+                    formData.fname,
+                    formData.lname,
+                    formData.telNumber
+                )
+                .then((res) => {
+                    if (res.accessToken) {
+                        console.log(res);
+                        navigate("/login");
+                    } else {
+                        setError(res.message);
+                    }
+                });
+        } else {
+            setError("All fields are mandatory!");
+            return;
+        }
+    };
+
     return (
         <section id="register" className="container">
             <h2 className="title">Sign Up</h2>
+            {error && <div className="error">{error}</div>}
+
             <form className="form">
                 <label htmlFor="email">
                     <b>Email</b>
@@ -14,6 +78,7 @@ export default function Register() {
                     type="email"
                     placeholder="Enter Email"
                     name="email"
+                    onChange={changeHandler}
                     required
                 />
                 <label htmlFor="fname">
@@ -23,6 +88,7 @@ export default function Register() {
                     type="text"
                     placeholder="Enter First Name"
                     name="fname"
+                    onChange={changeHandler}
                     required
                 />
                 <label htmlFor="lname">
@@ -32,6 +98,7 @@ export default function Register() {
                     type="text"
                     placeholder="Enter Last Name"
                     name="lname"
+                    onChange={changeHandler}
                     required
                 />
                 <label htmlFor="telNumber">
@@ -41,6 +108,7 @@ export default function Register() {
                     type="text"
                     placeholder="Enter Telephone Number"
                     name="telNumber"
+                    onChange={changeHandler}
                     required
                 />
                 <label htmlFor="password">
@@ -50,6 +118,7 @@ export default function Register() {
                     type="password"
                     placeholder="Enter Password"
                     name="password"
+                    onChange={changeHandler}
                     required
                 />
                 <label htmlFor="repeatPassword">
@@ -59,9 +128,15 @@ export default function Register() {
                     type="password"
                     placeholder="Confirm Password"
                     name="repeatPassword"
+                    onChange={changeHandler}
                     required
                 />
-                <button className="btn" type="submit">
+                <button
+                    onClick={submitHandler}
+                    className="btn"
+                    type="submit"
+                    disabled={!isFormValid}
+                >
                     Register
                 </button>
                 <span className="register-link">

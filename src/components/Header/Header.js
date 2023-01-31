@@ -37,7 +37,7 @@ export default function Header() {
                                 <i className="fa-solid fa-user" />
                             </Link>
                             <Link to="/catalog/car/add">Add Car</Link>
-                            <Link to="#">Logout</Link>
+                            <Link to="/logout">Logout</Link>
                         </>
                     ) : (
                         <>

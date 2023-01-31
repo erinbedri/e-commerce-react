@@ -10,6 +10,7 @@ import CarDetails from "./components/CarDetails/CarDetails";
 import CarAdd from "./components/CarAdd/CarAdd";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import Logout from "./components/Logout/Logout";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                         <Route path="/catalog/car/add" element={<CarAdd />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+                        <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </main>
 

@@ -1,9 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import "./header.css";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Header() {
+    const { user } = useContext(AuthContext);
+
     return (
         <header id="header" className="container">
             <div className="header-wrapper">
@@ -24,19 +28,23 @@ export default function Header() {
                 */}
 
                 <div className="header-controls">
-                    {/* Logged in user */}
-                    <Link to="#">
-                        <i className="fa-solid fa-heart" />
-                    </Link>
-                    <Link to="#">
-                        <i className="fa-solid fa-user" />
-                    </Link>
-                    <Link to="/catalog/car/add">Add Car</Link>
-                    <Link to="#">Logout</Link>
-
-                    {/* Logged out user */}
-                    <Link to="/login">Sign In</Link>
-                    <Link to="/register">Sign Up</Link>
+                    {user.accessToken ? (
+                        <>
+                            <Link to="#">
+                                <i className="fa-solid fa-heart" />
+                            </Link>
+                            <Link to="#">
+                                <i className="fa-solid fa-user" />
+                            </Link>
+                            <Link to="/catalog/car/add">Add Car</Link>
+                            <Link to="#">Logout</Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login">Sign In</Link>
+                            <Link to="/register">Sign Up</Link>
+                        </>
+                    )}
                 </div>
             </div>
         </header>

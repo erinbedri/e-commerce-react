@@ -1,0 +1,36 @@
+/* CATALOG */
+#catalog .catalog-item {
+    border-top: 1px solid var(--clr-text-backgroung);
+    border-bottom: 1px solid var(--clr-text-backgroung);
+
+    padding: 1rem;
+    margin: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+
+    transition: 0.2s ease-in-out;
+}
+
+#catalog .catalog-header {
+    padding: 0 1rem;
+    margin: 0 1rem;
+
+    font-weight: 600;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+}
+
+#catalog .catalog-item > img {
+    width: 90px;
+    height: 60px;
+    object-fit: cover;
+}
+
+#catalog .catalog-item:hover {
+    cursor: pointer;
+    background-color: var(--clr-text-backgroung);
+}

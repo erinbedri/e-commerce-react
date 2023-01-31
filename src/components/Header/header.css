@@ -1,0 +1,46 @@
+/* HEADER */
+#header .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1.75px solid var(--clr-text-backgroung);
+}
+
+#header .header-logo > a {
+    text-decoration: none;
+}
+
+#header .header-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+#header .header-nav > a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.15rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: 0.2s ease-in-out;
+}
+
+#header .header-controls {
+    display: flex;
+    gap: 1.5rem;
+}
+
+#header .header-controls > a {
+    font-size: 1rem;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+#header .header-controls i {
+    font-size: 1.35rem;
+    transition: 0.2s ease-in-out;
+}
+
+#header .header-controls > a:hover {
+    color: var(--clr-text-backgroung);
+}

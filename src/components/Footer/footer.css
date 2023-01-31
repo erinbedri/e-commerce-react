@@ -1,0 +1,6 @@
+/* FOOTER */
+#footer .footer-wrapper {
+    border-top: 1.75px solid var(--clr-text-backgroung);
+    text-align: center;
+    padding-top: 1rem;
+}

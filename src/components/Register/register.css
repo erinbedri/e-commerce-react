@@ -1,0 +1,14 @@
+/* REGISTER */
+#register {
+    width: 40%;
+    margin: 0 auto;
+}
+
+#register .register-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#register .register-link {
+    margin: 1rem auto;
+}

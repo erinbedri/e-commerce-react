@@ -1,47 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./car-details.css";
+import * as carService from "../../services/carService";
+import { useParams } from "react-router-dom";
 
 export default function CarDetails() {
+    const params = useParams();
+
+    const [currentCar, setCurrentCar] = useState({});
+
+    useEffect(() => {
+        carService
+            .getOne(params.carId)
+            .then((res) => {
+                setCurrentCar(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <section id="details" className="container">
             <h2 className="title">Car Details</h2>
             <div className="details-wrapper">
                 <div className="details-text">
                     <span>
-                        <b>Manufacturer: </b>Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit.
+                        <b>Manufacturer: </b>
+                        {currentCar.manufacturer}
                     </span>
                     <span>
-                        <b>Model : </b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
+                        <b>Model : </b>
+                        {currentCar.model}
                     </span>
                     <span>
-                        <b>Category: </b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
+                        <b>Category: </b>
+                        {currentCar.category}
                     </span>
                     <span>
-                        <b>Mileage: </b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
+                        <b>Mileage: </b>
+                        {Number(currentCar.mileage).toLocaleString()} km
                     </span>
                     <span>
-                        <b>Year: </b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
+                        <b>Year: </b>
+                        {currentCar.year}
                     </span>
                     <span>
-                        <b>Price: </b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
+                        <b>Price: </b>
+                        EUR {Number(currentCar.price).toLocaleString()}
                     </span>
                     <span>
-                        <b>Location: </b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit.
+                        <b>Location: </b>
+                        {currentCar.location}
                     </span>
                     <span>
-                        <b>Description: </b>Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Voluptate voluptatibus
-                        quibusdam perferendis dicta ea modi maxime, nisi sunt
-                        suscipit hic. Et facilis nulla ducimus quod consequuntur
-                        quis tenetur velit ab!
+                        <b>Description: </b> {currentCar.description}
                     </span>
                     <span>
                         <b>Contact: </b>Lorem ipsum dolor sit amet consectetur
@@ -49,10 +62,7 @@ export default function CarDetails() {
                     </span>
                 </div>
                 <div className="details-img">
-                    <img
-                        src="https://tesla-cdn.thron.com/delivery/public/image/tesla/f53054f4-30da-4a94-8aac-1aa6f662996d/bvlatuR/std/1200x628/Model-S-Social?quality=auto-medium&format=auto"
-                        alt="car"
-                    />
+                    <img src={currentCar.imageUrl} alt="car" />
                 </div>
             </div>
         </section>

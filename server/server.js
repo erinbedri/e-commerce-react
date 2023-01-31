@@ -1532,7 +1532,7 @@
                 price: 25000,
                 location: "Berlin, DE",
                 imageUrl:
-                    "https://tesla-cdn.thron.com/delivery/public/image/tesla/f53054f4-30da-4a94-8aac-1aa6f662996d/bvlatuR/std/1200x628/Model-S-Social?quality=auto-medium&format=auto",
+                    "https://www.autozeitung.de/assets/styles/article_image/public/field/image/tesla-model-x-facelift-2021-01.jpg?itok=x01OcCkb",
                 description:
                     "The Tesla Model S is a premium electric car that offers cutting-edge technology and long-range capabilities. With its sleek, aerodynamic design and advanced battery technology, the Model S is able to travel up to 402 miles on a single charge. It also features a spacious, high-tech interior with a large touch screen display, advanced driver-assist systems, and a host of other cutting-edge features. Whether you're an eco-conscious car enthusiast, a tech buff, or just someone who wants to reduce their carbon footprint, the Tesla Model S is an excellent choice.",
                 _createdOn: 1617194128618,
@@ -1547,7 +1547,7 @@
                 price: 75000,
                 location: "London, UK",
                 imageUrl:
-                    "https://tesla-cdn.thron.com/delivery/public/image/tesla/8093ef12-e1ed-42f8-bb06-0d0b33df9bcc/jSViLWj/std/1200x628/Model-X-Social?quality=auto-medium&format=auto",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2017_Tesla_Model_X_100D_Front.jpg/1200px-2017_Tesla_Model_X_100D_Front.jpg",
                 description:
                     "The Tesla Model X is a premium electric SUV that offers advanced technology and long-range capabilities. With its spacious interior, advanced driver-assist systems, and cutting-edge features, the Model X is an excellent choice for families or anyone who wants a high-tech, eco-friendly vehicle. With its long range and advanced safety features, the Model X is also perfect for long road trips.",
                 _createdOn: 1617194128618,
@@ -1562,7 +1562,7 @@
                 price: 55000,
                 location: "Berlin, Germany",
                 imageUrl:
-                    "https://bmw-cdn.thron.com/delivery/public/image/bmw/8093ef12-e1ed-42f8-bb06-0d0b33df9bcc/jSViLWj/std/1200x628/i3-Social?quality=auto-medium&format=auto",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/BMW-I3-Testfahrzeug.jpeg/1200px-BMW-I3-Testfahrzeug.jpeg",
                 description:
                     "The BMW i3 is a cutting-edge electric hatchback that combines sleek design with eco-friendly technology. With its advanced powertrain, spacious interior, and cutting-edge safety features, the i3 is the perfect choice for city dwellers or anyone looking for a highly efficient and technologically advanced vehicle.",
                 _createdOn: 1617194128619,
@@ -1577,7 +1577,7 @@
                 price: 85000,
                 location: "Paris, France",
                 imageUrl:
-                    "https://jaguar-cdn.thron.com/delivery/public/image/jaguar/8093ef12-e1ed-42f8-bb06-0d0b33df9bcc/jSViLWj/std/1200x628/I-PACE-Social?quality=auto-medium&format=auto",
+                    "https://www.rivervaleleasing.co.uk/webp/blog/jaguar-i-pace-front-angle-840-0.jpg",
                 description:
                     "The Jaguar I-PACE is a luxury electric SUV that offers sleek design, advanced technology, and long-range capabilities. With its powerful electric motors, spacious interior, and cutting-edge safety features, the I-PACE is the perfect choice for those who want a premium electric vehicle with the latest technology.",
                 _createdOn: 1617194128620,
@@ -1592,7 +1592,7 @@
                 price: 35000,
                 location: "Tokyo, Japan",
                 imageUrl:
-                    "https://nissan-cdn.thron.com/delivery/public/image/nissan/8093ef12-e1ed-42f8-bb06-0d0b33df9bcc/jSViLWj/std/1200x628/LEAF-Social?quality=auto-medium&format=auto",
+                    "https://assets.adac.de/image/upload/ar_16:9,c_fill,f_auto,g_auto,q_auto:eco,w_1256/v1/Autodatenbank/Fahrzeugbilder/im05179-1-nissan-leaf.jpeg",
                 description:
                     "The Nissan LEAF is a highly efficient electric hatchback that offers advanced technology, long range capabilities, and a spacious interior. With its advanced powertrain, cutting-edge safety features, and affordable price, the LEAF is an excellent choice for anyone looking for a budget-friendly electric vehicle.",
                 _createdOn: 1617194128621,

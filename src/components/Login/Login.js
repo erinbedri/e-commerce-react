@@ -6,15 +6,14 @@ import * as authService from "../../services/authService";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Login() {
-    const navigate = useNavigate();
     const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
 
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
-
-    const [error, setError] = useState("");
 
     const changeHandler = (e) => {
         setFormData((oldData) => ({
@@ -73,7 +72,7 @@ export default function Login() {
                     Login
                 </button>
                 <span className="login-link">
-                    Not registered? <a href="#">Sign up</a> instead.
+                    Not registered? <Link to="/register">Sign up</Link> instead.
                 </span>
             </form>
         </section>

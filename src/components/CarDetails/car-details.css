@@ -14,3 +14,10 @@
 .with-line-breaks {
     white-space: pre-line;
 }
+
+.car-details-controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin: 2rem 0 0 0;
+}

@@ -8,6 +8,8 @@ import Header from "./components/Header/Header";
 import Catalog from "./components/Catalog/Catalog";
 import CarDetails from "./components/CarDetails/CarDetails";
 import CarAdd from "./components/CarAdd/CarAdd";
+import CarEdit from "./components/CarEdit/CarEdit";
+import CarDelete from "./components/CarDelete/CarDelete";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
@@ -36,6 +38,14 @@ function App() {
                         <Route
                             path="/catalog/:carId/details"
                             element={<CarDetails />}
+                        />
+                        <Route
+                            path="/catalog/:carId/delete"
+                            element={<CarDelete />}
+                        />
+                        <Route
+                            path="/catalog/:carId/edit"
+                            element={<CarEdit />}
                         />
                         <Route path="/catalog/car/add" element={<CarAdd />} />
                         <Route path="/login" element={<Login />} />

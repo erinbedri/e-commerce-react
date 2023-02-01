@@ -21,7 +21,6 @@ export default function Catalog() {
 
     return (
         <section id="catalog" className="container">
-            <h2 className="title">Car Catalog</h2>
             <div className="catalog-list">
                 <div className="catalog-header">
                     <span />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./car-details.css";
 import * as carService from "../../services/carService";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function CarDetails() {
     const params = useParams();
@@ -68,6 +68,15 @@ export default function CarDetails() {
                 <div className="details-img">
                     <img src={currentCar.imageUrl} alt="car" />
                 </div>
+            </div>
+
+            <div className="car-details-controls">
+                <Link to={`/catalog/${currentCar._id}/edit`}>
+                    <button className="btn">Edit</button>
+                </Link>
+                <Link to={`/catalog/${currentCar._id}/delete`}>
+                    <button className="btn">Delete</button>
+                </Link>
             </div>
         </section>
     );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 import "./register.css";
 import * as authService from "../../services/authService";
-import { useNavigate } from "react-router-dom";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -140,8 +140,8 @@ export default function Register() {
                     Register
                 </button>
                 <span className="register-link">
-                    Already registered?
-                    <a href="#">Sign ip</a> instead.
+                    Already registered? <Link to="/login">Sign ip</Link>{" "}
+                    instead.
                 </span>
             </form>
         </section>

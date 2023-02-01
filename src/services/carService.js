@@ -11,4 +11,7 @@ export const getOne = (carId) => request.get(`${baseUrl}/${carId}`);
 
 export const addCar = (carData) => request.post(baseUrl, carData);
 
+export const editCar = (carId, carData) =>
+    request.put(`${baseUrl}/${carId}`, carData);
+
 export const deleteCar = (carId) => request.del(`${baseUrl}/${carId}`);

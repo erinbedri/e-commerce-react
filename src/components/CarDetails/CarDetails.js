@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 
 import "./car-details.css";
 import * as carService from "../../services/carService";
-import { useParams, Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function CarDetails() {
     const params = useParams();
+
+    const { user } = useContext(AuthContext);
 
     const [currentCar, setCurrentCar] = useState({});
 
@@ -70,14 +73,16 @@ export default function CarDetails() {
                 </div>
             </div>
 
-            <div className="car-details-controls">
-                <Link to={`/catalog/${currentCar._id}/edit`}>
-                    <button className="btn">Edit</button>
-                </Link>
-                <Link to={`/catalog/${currentCar._id}/delete`}>
-                    <button className="btn">Delete</button>
-                </Link>
-            </div>
+            {user.accessToken && (
+                <div className="car-details-controls">
+                    <Link to={`/catalog/${currentCar._id}/edit`}>
+                        <button className="btn">Edit</button>
+                    </Link>
+                    <Link to={`/catalog/${currentCar._id}/delete`}>
+                        <button className="btn">Delete</button>
+                    </Link>
+                </div>
+            )}
         </section>
     );
 }

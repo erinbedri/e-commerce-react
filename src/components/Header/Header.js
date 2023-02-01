@@ -30,7 +30,7 @@ export default function Header() {
                 <div className="header-controls">
                     {user.accessToken ? (
                         <>
-                            <NavLink to="#" activeClassName="active">
+                            <NavLink to="#" activeclassname="active">
                                 <i className="fa-solid fa-heart" />
                             </NavLink>
                             <NavLink to="#">

@@ -9,6 +9,8 @@ export default function CarAdd() {
 
     const navigate = useNavigate();
 
+    const [error, setError] = useState([]);
+
     const [formData, setFormData] = useState({
         manufacturer: "",
         model: "",
@@ -26,17 +28,15 @@ export default function CarAdd() {
     });
 
     const isFormValid =
-        formData.manufacturer &&
-        formData.model &&
-        formData.category &&
-        formData.mileage &&
-        formData.year &&
-        formData.imageUrl &&
-        formData.price &&
-        formData.location &&
-        formData.description;
-
-    const [error, setError] = useState("");
+        formData.manufacturer != "" &&
+        formData.model != "" &&
+        formData.category != "" &&
+        formData.mileage != "" &&
+        formData.year != "" &&
+        formData.imageUrl != "" &&
+        formData.price != "" &&
+        formData.location != "" &&
+        formData.description != "";
 
     const changeHandler = (e) => {
         setFormData((oldData) => ({
@@ -48,6 +48,21 @@ export default function CarAdd() {
 
     const submitHandler = (e) => {
         e.preventDefault();
+
+        if (formData.price < 0) {
+            setError([...error, "Price cannot be below 0!"]);
+            return;
+        }
+
+        if (formData.mileage < 0) {
+            setError([...error, "Mileage cannot be below 0!"]);
+            return;
+        }
+
+        if (formData.year < 1900 || formData.year > 2023) {
+            setError([...error, "Year must be between 1900 and 2023!"]);
+            return;
+        }
 
         if (isFormValid) {
             carService
@@ -61,7 +76,7 @@ export default function CarAdd() {
                     console.log(error);
                 });
         } else {
-            setError("All fields are mandatory!");
+            setError([...error, "All fields are mandatory!"]);
             return;
         }
     };
@@ -69,7 +84,10 @@ export default function CarAdd() {
     return (
         <section id="login" className="container">
             <h2 className="title">Add Car</h2>
-            {error && <div className="error">{error}</div>}
+            {error &&
+                [...new Set(error)].map((e) => (
+                    <div className="error">{e}</div>
+                ))}
 
             <form className="form">
                 <label htmlFor="manufacturer">

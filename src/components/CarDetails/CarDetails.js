@@ -53,12 +53,16 @@ export default function CarDetails() {
                         <b>Location: </b>
                         {currentCar.location}
                     </span>
-                    <span>
+                    <span className="with-line-breaks">
                         <b>Description: </b> {currentCar.description}
                     </span>
                     <span>
-                        <b>Contact: </b>Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit.
+                        <b>Contact Person: </b>
+                        {currentCar.fname} {currentCar.lname}
+                    </span>
+                    <span>
+                        <b>Telephone Number: </b>
+                        {currentCar.telNumber}
                     </span>
                 </div>
                 <div className="details-img">

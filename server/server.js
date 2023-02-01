@@ -1537,6 +1537,9 @@
                 year: 2018,
                 price: 25000,
                 location: "Berlin, DE",
+                fname: "Petar",
+                lname: "Petrov",
+                telNumber: "00359124314213",
                 imageUrl:
                     "https://www.autozeitung.de/assets/styles/article_image/public/field/image/tesla-model-x-facelift-2021-01.jpg?itok=x01OcCkb",
                 description:
@@ -1552,6 +1555,9 @@
                 year: 2020,
                 price: 75000,
                 location: "London, UK",
+                fname: "Petar",
+                lname: "Petrov",
+                telNumber: "00359124314213",
                 imageUrl:
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2017_Tesla_Model_X_100D_Front.jpg/1200px-2017_Tesla_Model_X_100D_Front.jpg",
                 description:
@@ -1567,6 +1573,9 @@
                 year: 2019,
                 price: 55000,
                 location: "Berlin, Germany",
+                fname: "Petar",
+                lname: "Petrov",
+                telNumber: "00359124314213",
                 imageUrl:
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/BMW-I3-Testfahrzeug.jpeg/1200px-BMW-I3-Testfahrzeug.jpeg",
                 description:
@@ -1582,6 +1591,9 @@
                 year: 2021,
                 price: 85000,
                 location: "Paris, France",
+                fname: "Petar",
+                lname: "Petrov",
+                telNumber: "00359124314213",
                 imageUrl:
                     "https://www.rivervaleleasing.co.uk/webp/blog/jaguar-i-pace-front-angle-840-0.jpg",
                 description:
@@ -1597,6 +1609,9 @@
                 year: 2020,
                 price: 35000,
                 location: "Tokyo, Japan",
+                fname: "Petar",
+                lname: "Petrov",
+                telNumber: "00359124314213",
                 imageUrl:
                     "https://assets.adac.de/image/upload/ar_16:9,c_fill,f_auto,g_auto,q_auto:eco,w_1256/v1/Autodatenbank/Fahrzeugbilder/im05179-1-nissan-leaf.jpeg",
                 description:

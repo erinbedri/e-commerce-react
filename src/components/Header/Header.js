@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import "./header.css";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -30,19 +30,21 @@ export default function Header() {
                 <div className="header-controls">
                     {user.accessToken ? (
                         <>
-                            <Link to="#">
+                            <NavLink to="#" activeClassName="active">
                                 <i className="fa-solid fa-heart" />
-                            </Link>
-                            <Link to="#">
+                            </NavLink>
+                            <NavLink to="#">
                                 <i className="fa-solid fa-user" />
-                            </Link>
-                            <Link to="/catalog/car/add">Add Car</Link>
-                            <Link to="/logout">Logout</Link>
+                            </NavLink>
+                            <NavLink to="/">Catalog</NavLink>
+                            <NavLink to="/catalog/car/add">Add Car</NavLink>
+                            <NavLink to="/catalog/owner">My Cars</NavLink>
+                            <NavLink to="/logout">Logout</NavLink>
                         </>
                     ) : (
                         <>
-                            <Link to="/login">Sign In</Link>
-                            <Link to="/register">Sign Up</Link>
+                            <NavLink to="/login">Sign In</NavLink>
+                            <NavLink to="/register">Sign Up</NavLink>
                         </>
                     )}
                 </div>

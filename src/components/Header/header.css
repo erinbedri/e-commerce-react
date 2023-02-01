@@ -44,3 +44,8 @@
 #header .header-controls > a:hover {
     color: var(--clr-text-backgroung);
 }
+
+.active {
+    color: var(--clr-icon);
+    font-weight: bold;
+}

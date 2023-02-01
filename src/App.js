@@ -6,6 +6,7 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { AuthContext } from "./contexts/AuthContext";
 import Header from "./components/Header/Header";
 import Catalog from "./components/Catalog/Catalog";
+import CatalogOwner from "./components/CatalogOwner/CatalogOwner";
 import CarDetails from "./components/CarDetails/CarDetails";
 import CarAdd from "./components/CarAdd/CarAdd";
 import CarEdit from "./components/CarEdit/CarEdit";
@@ -35,6 +36,10 @@ function App() {
                         <Route path="/" element={<Catalog />} />
 
                         <Route path="/catalog" element={<Catalog />} />
+                        <Route
+                            path="/catalog/owner"
+                            element={<CatalogOwner />}
+                        />
                         <Route
                             path="/catalog/:carId/details"
                             element={<CarDetails />}

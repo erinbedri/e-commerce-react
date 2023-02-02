@@ -11,20 +11,20 @@ export default function Catalog() {
     const [collectionSize, setCollectionSize] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [offset, setOffset] = useState(0);
-
     const totalPages = Math.ceil(collectionSize / pageSize);
     const [sortBy, setSortBy] = useState("manufacturer");
+    const [orderBy, setOrderBy] = useState("");
 
     useEffect(() => {
         carService
-            .getAll(sortBy, offset, pageSize)
+            .getAll(sortBy, orderBy, offset, pageSize)
             .then((res) => {
                 setCars(res);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [offset, pageSize, sortBy]);
+    }, [offset, pageSize, sortBy, orderBy]);
 
     useEffect(() => {
         carService
@@ -66,8 +66,8 @@ export default function Catalog() {
     };
 
     const sortByHandler = (e) => {
-        console.log(e.target.innerText.toLowerCase());
         setSortBy(e.target.innerText.toLowerCase());
+        setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
     };
 
     return (
@@ -75,13 +75,27 @@ export default function Catalog() {
             <div className="catalog-list">
                 <div className="catalog-header">
                     <span />
-                    <span onClick={sortByHandler}>Manufacturer</span>
-                    <span onClick={sortByHandler}>Model</span>
-                    <span onClick={sortByHandler}>Category</span>
-                    <span onClick={sortByHandler}>Mileage</span>
-                    <span onClick={sortByHandler}>Year</span>
-                    <span onClick={sortByHandler}>Price</span>
-                    <span onClick={sortByHandler}>Location</span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Manufacturer
+                    </span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Model
+                    </span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Category
+                    </span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Mileage
+                    </span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Year
+                    </span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Price
+                    </span>
+                    <span onClick={sortByHandler}>
+                        <i className="fa-solid fa-sort" /> Location
+                    </span>
                 </div>
 
                 {cars.map((c) => (

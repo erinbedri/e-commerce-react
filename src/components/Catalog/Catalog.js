@@ -23,7 +23,7 @@ export default function Catalog() {
             .catch((error) => {
                 console.log(error);
             });
-    }, [offset]);
+    }, [offset, pageSize]);
 
     useEffect(() => {
         carService
@@ -58,6 +58,10 @@ export default function Catalog() {
     const lastPageHandler = () => {
         setCurrentPage(totalPages);
         setOffset((totalPages - 1) * pageSize);
+    };
+
+    const selectHandler = (e) => {
+        setPageSize(e.target.value);
     };
 
     return (
@@ -107,6 +111,19 @@ export default function Catalog() {
                     onClick={lastPageHandler}
                     className="fa-solid fa-angles-right"
                 />
+
+                <select
+                    name="pageSizeSelector"
+                    id="pageSizeSelector"
+                    className="pageSizeSelector"
+                    onChange={selectHandler}
+                >
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
             </div>
         </section>
     );

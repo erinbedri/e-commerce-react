@@ -52,3 +52,8 @@
 .pagination-controls i {
     font-size: 1.5rem;
 }
+
+.pageSizeSelector {
+    border-radius: 1rem;
+    padding: 0.25rem 0.5rem;
+}

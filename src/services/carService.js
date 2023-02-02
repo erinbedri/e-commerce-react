@@ -4,9 +4,9 @@ const baseUrl = "http://localhost:3030/data/cars";
 
 export const getCollectionSize = () => request.get(`${baseUrl}/?count`);
 
-export const getAll = (sortBy, orderBy, offset, pageSize) =>
+export const getAll = (searchParam, sortBy, orderBy, offset, pageSize) =>
     request.get(
-        `${baseUrl}?sortBy=${sortBy}${orderBy}&offset=${offset}&pageSize=${pageSize}`
+        `${baseUrl}?where=manufacturer%20like%20%22${searchParam}%22&sortBy=${sortBy}${orderBy}&offset=${offset}&pageSize=${pageSize}`
     );
 
 export const getAllMyCars = (ownerId) =>

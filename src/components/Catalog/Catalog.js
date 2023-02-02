@@ -15,16 +15,18 @@ export default function Catalog() {
     const [sortBy, setSortBy] = useState("manufacturer");
     const [orderBy, setOrderBy] = useState("");
 
+    const [searchParam, setSearchParam] = useState("");
+
     useEffect(() => {
         carService
-            .getAll(sortBy, orderBy, offset, pageSize)
+            .getAll(searchParam, sortBy, orderBy, offset, pageSize)
             .then((res) => {
                 setCars(res);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [offset, pageSize, sortBy, orderBy]);
+    }, [offset, pageSize, sortBy, orderBy, searchParam]);
 
     useEffect(() => {
         carService
@@ -73,82 +75,102 @@ export default function Catalog() {
         setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
     };
 
+    const searchHandler = (e) => {
+        setSearchParam(e.target.value.toLowerCase());
+    };
+
+    console.log(cars);
+
     return (
-        <section id="catalog" className="container">
-            <div className="catalog-list">
-                <div className="catalog-header">
-                    <span />
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Manufacturer
-                    </span>
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Model
-                    </span>
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Category
-                    </span>
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Mileage
-                    </span>
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Year
-                    </span>
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Price
-                    </span>
-                    <span onClick={sortByHandler}>
-                        <i className="fa-solid fa-sort" /> Location
-                    </span>
+        <>
+            <form className="search">
+                <div>
+                    <input
+                        type="search"
+                        name="search"
+                        className="search-input"
+                        placeholder="Search by Manufacturer..."
+                        onChange={searchHandler}
+                    />
+                </div>
+            </form>
+
+            <section id="catalog" className="container">
+                <div className="catalog-list">
+                    <div className="catalog-header">
+                        <span />
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Manufacturer
+                        </span>
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Model
+                        </span>
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Category
+                        </span>
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Mileage
+                        </span>
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Year
+                        </span>
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Price
+                        </span>
+                        <span onClick={sortByHandler}>
+                            <i className="fa-solid fa-sort" /> Location
+                        </span>
+                    </div>
+
+                    {cars.map((c) => (
+                        <Link
+                            to={`/catalog/${c._id}/details`}
+                            key={c._id}
+                            className="catalog-link"
+                        >
+                            <CarItem car={c} />
+                        </Link>
+                    ))}
                 </div>
 
-                {cars.map((c) => (
-                    <Link
-                        to={`/catalog/${c._id}/details`}
-                        key={c._id}
-                        className="catalog-link"
-                    >
-                        <CarItem car={c} />
-                    </Link>
-                ))}
-            </div>
+                <div className="pagination-controls">
+                    <i
+                        onClick={firstPageHandler}
+                        className="fa-solid fa-angles-left"
+                    />
+                    <i
+                        onClick={previousPageHandler}
+                        className="fa-solid fa-chevron-left"
+                    />
 
-            <div className="pagination-controls">
-                <i
-                    onClick={firstPageHandler}
-                    className="fa-solid fa-angles-left"
-                />
-                <i
-                    onClick={previousPageHandler}
-                    className="fa-solid fa-chevron-left"
-                />
+                    <h3>
+                        Page {currentPage} of {totalPages}
+                    </h3>
 
-                <h3>
-                    Page {currentPage} of {totalPages}
-                </h3>
+                    <i
+                        onClick={nextPageHandler}
+                        className="fa-solid fa-chevron-right"
+                    />
+                    <i
+                        onClick={lastPageHandler}
+                        className="fa-solid fa-angles-right"
+                    />
 
-                <i
-                    onClick={nextPageHandler}
-                    className="fa-solid fa-chevron-right"
-                />
-                <i
-                    onClick={lastPageHandler}
-                    className="fa-solid fa-angles-right"
-                />
-
-                {currentPage == 1 && (
-                    <select
-                        name="pageSizeSelector"
-                        id="pageSizeSelector"
-                        className="pageSizeSelector"
-                        onChange={selectHandler}
-                        defaultValue={pageSize}
-                    >
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                    </select>
-                )}
-            </div>
-        </section>
+                    {currentPage == 1 && (
+                        <select
+                            name="pageSizeSelector"
+                            id="pageSizeSelector"
+                            className="pageSizeSelector"
+                            onChange={selectHandler}
+                            defaultValue={pageSize}
+                        >
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    )}
+                </div>
+            </section>
+        </>
     );
 }

@@ -3,7 +3,7 @@
     border-top: 1px solid var(--clr-text-backgroung);
     border-bottom: 1px solid var(--clr-text-backgroung);
 
-    padding: 0.75rem;
+    padding: 0.5rem;
     margin: 1rem;
 
     display: grid;
@@ -57,4 +57,20 @@
 .pageSizeSelector {
     border-radius: 1rem;
     padding: 0.25rem 0.5rem;
+}
+
+/* SEARCH */
+.search {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+}
+
+.search-input {
+    border-radius: 0.75rem;
+    border: 1px solid;
+    padding: 0.35rem;
+    text-indent: 0.5rem;
+    width: 250px;
 }

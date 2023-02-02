@@ -15,10 +15,10 @@ export default function CarAdd() {
         manufacturer: "",
         model: "",
         category: "",
-        mileage: "",
-        year: "",
+        mileage: null,
+        year: null,
         imageUrl: "",
-        price: "",
+        price: null,
         location: "",
         description: "",
 
@@ -31,10 +31,10 @@ export default function CarAdd() {
         formData.manufacturer != "" &&
         formData.model != "" &&
         formData.category != "" &&
-        formData.mileage != "" &&
-        formData.year != "" &&
+        formData.mileage != null &&
+        formData.year != null &&
         formData.imageUrl != "" &&
-        formData.price != "" &&
+        formData.price != null &&
         formData.location != "" &&
         formData.description != "";
 

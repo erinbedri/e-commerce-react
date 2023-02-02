@@ -19,10 +19,10 @@ export default function CarEdit() {
         currentCar.manufacturer != "" &&
         currentCar.model != "" &&
         currentCar.category != "" &&
-        currentCar.mileage != "" &&
-        currentCar.year != "" &&
+        currentCar.mileage != null &&
+        currentCar.year != null &&
         currentCar.imageUrl != "" &&
-        currentCar.price != "" &&
+        currentCar.price != null &&
         currentCar.location != "" &&
         currentCar.description != "";
 

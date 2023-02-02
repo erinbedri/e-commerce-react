@@ -4,9 +4,9 @@ const baseUrl = "http://localhost:3030/data/cars";
 
 export const getCollectionSize = () => request.get(`${baseUrl}/?count`);
 
-export const getAll = (offset, pageSize) =>
+export const getAll = (sortBy, offset, pageSize) =>
     request.get(
-        `${baseUrl}?sortBy=_createdOn%20desc&offset=${offset}&pageSize=${pageSize}`
+        `${baseUrl}?sortBy=${sortBy}&offset=${offset}&pageSize=${pageSize}`
     );
 
 export const getAllMyCars = (ownerId) =>

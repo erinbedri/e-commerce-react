@@ -22,6 +22,7 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     align-items: center;
+    cursor: pointer;
 }
 
 #catalog .catalog-link {

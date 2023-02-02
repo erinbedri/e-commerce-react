@@ -13,17 +13,18 @@ export default function Catalog() {
     const [offset, setOffset] = useState(0);
 
     const totalPages = Math.ceil(collectionSize / pageSize);
+    const [sortBy, setSortBy] = useState("manufacturer");
 
     useEffect(() => {
         carService
-            .getAll(offset, pageSize)
+            .getAll(sortBy, offset, pageSize)
             .then((res) => {
                 setCars(res);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [offset, pageSize]);
+    }, [offset, pageSize, sortBy]);
 
     useEffect(() => {
         carService
@@ -64,18 +65,23 @@ export default function Catalog() {
         setPageSize(e.target.value);
     };
 
+    const sortByHandler = (e) => {
+        console.log(e.target.innerText.toLowerCase());
+        setSortBy(e.target.innerText.toLowerCase());
+    };
+
     return (
         <section id="catalog" className="container">
             <div className="catalog-list">
                 <div className="catalog-header">
                     <span />
-                    <span>Manufacturer</span>
-                    <span>Model</span>
-                    <span>Category</span>
-                    <span>Mileage</span>
-                    <span>Year</span>
-                    <span>Price</span>
-                    <span>Location</span>
+                    <span onClick={sortByHandler}>Manufacturer</span>
+                    <span onClick={sortByHandler}>Model</span>
+                    <span onClick={sortByHandler}>Category</span>
+                    <span onClick={sortByHandler}>Mileage</span>
+                    <span onClick={sortByHandler}>Year</span>
+                    <span onClick={sortByHandler}>Price</span>
+                    <span onClick={sortByHandler}>Location</span>
                 </div>
 
                 {cars.map((c) => (
@@ -112,18 +118,19 @@ export default function Catalog() {
                     className="fa-solid fa-angles-right"
                 />
 
-                <select
-                    name="pageSizeSelector"
-                    id="pageSizeSelector"
-                    className="pageSizeSelector"
-                    onChange={selectHandler}
-                >
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                </select>
+                {currentPage == 1 && (
+                    <select
+                        name="pageSizeSelector"
+                        id="pageSizeSelector"
+                        className="pageSizeSelector"
+                        onChange={selectHandler}
+                        defaultValue={pageSize}
+                    >
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                )}
             </div>
         </section>
     );

@@ -38,6 +38,12 @@ export default function CarAdd() {
         formData.location != "" &&
         formData.description != "";
 
+    const blurHandler = () => {
+        if (formData.manufacturer == "") {
+            console.log("empty");
+        }
+    };
+
     const changeHandler = (e) => {
         setFormData((oldData) => ({
             ...oldData,
@@ -94,6 +100,7 @@ export default function CarAdd() {
                     <b>Manufacturer</b>
                 </label>
                 <input
+                    onBlur={blurHandler}
                     type="text"
                     placeholder="Enter Manufacturer"
                     name="manufacturer"

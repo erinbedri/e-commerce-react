@@ -38,3 +38,17 @@
     cursor: pointer;
     background-color: var(--clr-text-backgroung);
 }
+
+/* PAGINATION */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    margin-top: 2rem;
+}
+
+.pagination-controls i {
+    font-size: 1.5rem;
+}

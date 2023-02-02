@@ -2,7 +2,12 @@ import * as request from "./requester";
 
 const baseUrl = "http://localhost:3030/data/cars";
 
-export const getAll = () => request.get(`${baseUrl}?sortBy=_createdOn%20desc}`);
+export const getCollectionSize = () => request.get(`${baseUrl}/?count`);
+
+export const getAll = (offset, pageSize) =>
+    request.get(
+        `${baseUrl}?sortBy=_createdOn%20desc&offset=${offset}&pageSize=${pageSize}`
+    );
 
 export const getAllMyCars = (ownerId) =>
     request.get(`${baseUrl}?sortBy=_createdOn%20desc?distinct=${ownerId}`);

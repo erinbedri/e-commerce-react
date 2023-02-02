@@ -66,15 +66,12 @@ export default function Catalog() {
     };
 
     const sortByHandler = (e) => {
-        console.log(e.target.parentElement.innerText);
         setSortBy(
             e.target.innerText.toLowerCase() ||
                 e.target.parentElement.innerText.toLowerCase()
         );
         setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
     };
-
-    console.log("sort by:", sortBy);
 
     return (
         <section id="catalog" className="container">

@@ -61,11 +61,15 @@ export default function CarDetails() {
                     </span>
                     <span>
                         <b>Contact Person: </b>
-                        {currentCar.fname} {currentCar.lname}
+                        {user.accessToken
+                            ? `${currentCar.fname} ${currentCar.lname}`
+                            : `Please login to reveal`}
                     </span>
                     <span>
                         <b>Telephone Number: </b>
-                        {currentCar.telNumber}
+                        {user.accessToken
+                            ? currentCar.telNumber
+                            : `Please login to reveal`}
                     </span>
                 </div>
                 <div className="details-img">

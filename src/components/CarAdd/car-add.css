@@ -1,0 +1,23 @@
+#car-add {
+    width: 40%;
+    margin: 0 auto;
+}
+
+#car-add .form-error-input {
+    border: 2px solid red;
+}
+
+#car-add .form-error-label {
+    color: red;
+}
+
+#car-add .form-error-input::placeholder {
+    color: red;
+}
+
+#car-add .form-error-message {
+    color: red;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}

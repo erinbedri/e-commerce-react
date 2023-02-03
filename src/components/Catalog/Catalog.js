@@ -68,18 +68,13 @@ export default function Catalog() {
     };
 
     const sortByHandler = (e) => {
-        setSortBy(
-            e.target.innerText.toLowerCase() ||
-                e.target.parentElement.innerText.toLowerCase()
-        );
+        setSortBy(e.target.innerText.toLowerCase() || e.target.parentElement.innerText.toLowerCase());
         setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
     };
 
     const searchHandler = (e) => {
         setSearchParam(e.target.value.toLowerCase());
     };
-
-    console.log(cars);
 
     return (
         <>
@@ -123,38 +118,22 @@ export default function Catalog() {
                     </div>
 
                     {cars.map((c) => (
-                        <Link
-                            to={`/catalog/${c._id}/details`}
-                            key={c._id}
-                            className="catalog-link"
-                        >
+                        <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
                             <CarItem car={c} />
                         </Link>
                     ))}
                 </div>
 
                 <div className="pagination-controls">
-                    <i
-                        onClick={firstPageHandler}
-                        className="fa-solid fa-angles-left"
-                    />
-                    <i
-                        onClick={previousPageHandler}
-                        className="fa-solid fa-chevron-left"
-                    />
+                    <i onClick={firstPageHandler} className="fa-solid fa-angles-left" />
+                    <i onClick={previousPageHandler} className="fa-solid fa-chevron-left" />
 
                     <h3>
                         Page {currentPage} of {totalPages}
                     </h3>
 
-                    <i
-                        onClick={nextPageHandler}
-                        className="fa-solid fa-chevron-right"
-                    />
-                    <i
-                        onClick={lastPageHandler}
-                        className="fa-solid fa-angles-right"
-                    />
+                    <i onClick={nextPageHandler} className="fa-solid fa-chevron-right" />
+                    <i onClick={lastPageHandler} className="fa-solid fa-angles-right" />
 
                     {currentPage == 1 && (
                         <select

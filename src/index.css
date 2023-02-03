@@ -42,6 +42,12 @@ h6 {
     color: var(--clr-text-main);
 }
 
+.btn:disabled {
+    background: #999;
+    color: #555;
+    cursor: not-allowed;
+}
+
 a {
     color: var(--clr-text-main);
 }
@@ -70,7 +76,7 @@ i:hover {
 .form > input {
     margin-bottom: 1.5rem;
     border-radius: 0.75rem;
-    border: 1px solid;
+    border: 1px solid black;
     padding: 0.5rem;
     text-indent: 0.5rem;
 }

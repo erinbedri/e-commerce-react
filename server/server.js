@@ -1618,6 +1618,42 @@
                     "The Nissan LEAF is a highly efficient electric hatchback that offers advanced technology, long range capabilities, and a spacious interior. With its advanced powertrain, cutting-edge safety features, and affordable price, the LEAF is an excellent choice for anyone looking for a budget-friendly electric vehicle.",
                 _createdOn: 1617194128621,
             },
+            "8e3b9c51-2f1e-4d69-b2c2-06a076e34e54": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                manufacturer: "BMW",
+                model: "i3",
+                category: "Electric Car",
+                mileage: 30000,
+                year: 2020,
+                price: 35000,
+                location: "Paris, FR",
+                fname: "Pierre",
+                lname: "Dupont",
+                telNumber: "0033697415248",
+                imageUrl:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/BMW-I3-Testfahrzeug.jpeg/1200px-BMW-I3-Testfahrzeug.jpeg",
+                description:
+                    "The BMW i3 is a premium electric car that offers a unique combination of sustainable mobility and dynamic driving performance. With its innovative design and cutting-edge technology, the i3 is perfect for city driving, while also delivering impressive acceleration and handling when you want to enjoy a sportier drive. The spacious, high-tech interior is full of advanced features and premium materials, making it a great choice for anyone who wants to drive in style and comfort.",
+                _createdOn: 1617194128618,
+            },
+            "1d9a9e4e-848d-4fc7-89dc-1c6b8a43a085": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                manufacturer: "Nissan",
+                model: "Leaf",
+                category: "Electric Car",
+                mileage: 20000,
+                year: 2022,
+                price: 28000,
+                location: "London, UK",
+                fname: "John",
+                lname: "Doe",
+                telNumber: "00447598314512",
+                imageUrl:
+                    "https://assets.adac.de/image/upload/ar_16:9,c_fill,f_auto,g_auto,q_auto:eco,w_1256/v1/Autodatenbank/Fahrzeugbilder/im05179-1-nissan-leaf.jpeg",
+                description:
+                    "The Nissan Leaf is a compact electric car that offers reliable performance and a range of advanced features. With its efficient battery and compact design, the Leaf is the perfect choice for anyone who wants to reduce their carbon footprint and enjoy low-cost, low-maintenance driving. The spacious interior is full of convenient features and advanced technology, making it a great choice for city driving and longer trips alike.",
+                _createdOn: 1617194128618,
+            },
         },
         comments: {},
     };

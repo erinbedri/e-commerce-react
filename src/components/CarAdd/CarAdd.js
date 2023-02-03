@@ -6,10 +6,10 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import * as carService from "../../services/carService";
 
 export default function CarAdd() {
+    const currentYear = new Date().getFullYear();
+
     const [auth, setAuth] = useLocalStorage("auth", {});
     const navigate = useNavigate();
-    const [error, setError] = useState([]);
-
     const [formError, setFormError] = useState({});
 
     const [formData, setFormData] = useState({
@@ -28,26 +28,42 @@ export default function CarAdd() {
         telNumber: auth.telNumber,
     });
 
-    const isFormValid =
-        formData.manufacturer != "" &&
-        formData.model != "" &&
-        formData.category != "" &&
-        formData.mileage != null &&
-        formData.year != null &&
-        formData.imageUrl != "" &&
-        formData.price != null &&
-        formData.location != "" &&
-        formData.description != "";
+    const isFormEmpty = !Boolean(
+        formData.manufacturer &&
+            formData.model &&
+            formData.category &&
+            formData.mileage &&
+            formData.year &&
+            formData.imageUrl &&
+            formData.price &&
+            formData.location &&
+            formData.description
+    );
+
+    const isFormValid = !isFormEmpty && Object.values(formError).every((x) => x === null || x === "");
 
     const blurHandler = (e) => {
         if (e.target.value == "") {
-            console.log(e.target.name);
             setFormError((errors) => ({
                 ...errors,
                 [e.target.name]: `"${e.target.name}" field cannot be empty`,
             }));
+        } else if (e.target.name == "price" && e.target.value < 0) {
+            setFormError((errors) => ({
+                ...errors,
+                [e.target.name]: `"${e.target.name}" cannot be below 0!`,
+            }));
+        } else if (e.target.name == "mileage" && e.target.value < 0) {
+            setFormError((errors) => ({
+                ...errors,
+                [e.target.name]: `"${e.target.name}" cannot be below 0!`,
+            }));
+        } else if (e.target.name == "year" && (e.target.value < 1900 || e.target.value > currentYear)) {
+            setFormError((errors) => ({
+                ...errors,
+                [e.target.name]: `"${e.target.name}" must be between 1900 and ${currentYear}!`,
+            }));
         } else {
-            console.log("else");
             setFormError((errors) => ({
                 ...errors,
                 [e.target.name]: "",
@@ -65,21 +81,6 @@ export default function CarAdd() {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        if (formData.price < 0) {
-            setFormData([...error, "Price cannot be below 0!"]);
-            return;
-        }
-
-        if (formData.mileage < 0) {
-            setError([...error, "Mileage cannot be below 0!"]);
-            return;
-        }
-
-        if (formData.year < 1900 || formData.year > 2023) {
-            setError([...error, "Year must be between 1900 and 2023!"]);
-            return;
-        }
-
         if (isFormValid) {
             carService
                 .addCar(formData)
@@ -92,12 +93,13 @@ export default function CarAdd() {
                     console.log(error);
                 });
         } else {
-            setError([...error, "All fields are mandatory!"]);
+            setFormError((errors) => ({
+                ...errors,
+                isFormEmpty: true,
+            }));
             return;
         }
     };
-
-    console.log(formError);
 
     return (
         <section id="car-add" className="container">
@@ -234,7 +236,7 @@ export default function CarAdd() {
                 />
                 <p className="form-error-message">{formError.description ? formError.description : ""}</p>
 
-                <button onClick={submitHandler} className="btn" type="submit">
+                <button onClick={submitHandler} className="btn" type="submit" disabled={!isFormValid ? "disabled" : ""}>
                     Add
                 </button>
             </form>

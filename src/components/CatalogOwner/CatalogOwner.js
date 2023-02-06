@@ -19,7 +19,7 @@ export default function CatalogOwner() {
             .catch((error) => {
                 console.log(error);
             });
-    });
+    }, []);
 
     return (
         <section id="catalog" className="container">
@@ -36,11 +36,7 @@ export default function CatalogOwner() {
                 </div>
 
                 {myCars.map((c) => (
-                    <Link
-                        to={`/catalog/${c._id}/details`}
-                        key={c._id}
-                        className="catalog-link"
-                    >
+                    <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
                         <CarItem car={c} />
                     </Link>
                 ))}

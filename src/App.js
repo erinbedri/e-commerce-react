@@ -16,6 +16,7 @@ import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
 import Footer from "./components/Footer/Footer";
 import CarOwner from "./common/CarOwner";
+import AuthenticatedUser from "./common/AuthenticatedUser";
 
 function App() {
     const [auth, setAuth] = useLocalStorage("auth", {});
@@ -37,7 +38,11 @@ function App() {
                         <Route path="/" element={<Catalog />} />
 
                         <Route path="/catalog" element={<Catalog />} />
-                        <Route path="/catalog/owner" element={<CatalogOwner />} />
+
+                        <Route element={<AuthenticatedUser />}>
+                            <Route path="/catalog/owner" element={<CatalogOwner />} />
+                        </Route>
+
                         <Route path="/catalog/:carId/details" element={<CarDetails />} />
 
                         <Route element={<CarOwner />}>
@@ -48,9 +53,14 @@ function App() {
                             <Route path="/catalog/:carId/edit" element={<CarEdit />} />
                         </Route>
 
-                        <Route path="/catalog/car/add" element={<CarAdd />} />
+                        <Route element={<AuthenticatedUser />}>
+                            <Route path="/catalog/car/add" element={<CarAdd />} />
+                        </Route>
+
                         <Route path="/login" element={<Login />} />
+
                         <Route path="/register" element={<Register />} />
+
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </main>

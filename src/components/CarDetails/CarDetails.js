@@ -61,15 +61,11 @@ export default function CarDetails() {
                     </span>
                     <span>
                         <b>Contact Person: </b>
-                        {user.accessToken
-                            ? `${currentCar.fname} ${currentCar.lname}`
-                            : `Please login to reveal`}
+                        {user.accessToken ? `${currentCar.fname} ${currentCar.lname}` : `Please login to reveal`}
                     </span>
                     <span>
                         <b>Telephone Number: </b>
-                        {user.accessToken
-                            ? currentCar.telNumber
-                            : `Please login to reveal`}
+                        {user.accessToken ? currentCar.telNumber : `Please login to reveal`}
                     </span>
                 </div>
                 <div className="details-img">
@@ -77,7 +73,7 @@ export default function CarDetails() {
                 </div>
             </div>
 
-            {user.accessToken && (
+            {user.accessToken && user._id == currentCar._id ? (
                 <div className="car-details-controls">
                     <Link to={`/catalog/${currentCar._id}/edit`}>
                         <button className="btn">Edit</button>
@@ -86,6 +82,8 @@ export default function CarDetails() {
                         <button className="btn">Delete</button>
                     </Link>
                 </div>
+            ) : (
+                ""
             )}
         </section>
     );

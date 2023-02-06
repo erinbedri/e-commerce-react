@@ -14,7 +14,6 @@ export default function CarDelete() {
     const [error, setError] = useState("");
 
     const deleteHandler = () => {
-        console.log("delete");
         carService
             .deleteCar(currentCar._id)
             .then((res) => {
@@ -48,8 +47,7 @@ export default function CarDelete() {
     return (
         <section id="car-delete" className="container">
             <h2 className="title">
-                Are you sure you want to permanently delete{" "}
-                {currentCar.manufacturer} {currentCar.model}?
+                Are you sure you want to permanently delete {currentCar.manufacturer} {currentCar.model}?
             </h2>
             {error && <div className="error">{error}</div>}
 

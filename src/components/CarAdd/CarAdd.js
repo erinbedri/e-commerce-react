@@ -236,7 +236,7 @@ export default function CarAdd() {
                 />
                 <p className="form-error-message">{formError.description ? formError.description : ""}</p>
 
-                <button onClick={submitHandler} className="btn" type="submit" disabled={!isFormValid ? "disabled" : ""}>
+                <button onClick={submitHandler} className="btn" type="submit" disabled={isFormValid ? "" : "disabled"}>
                     Add
                 </button>
             </form>

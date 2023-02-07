@@ -78,7 +78,7 @@ export default function CarDetails() {
                 </div>
             </div>
 
-            {user.accessToken && user._id == currentCar._id ? (
+            {user.accessToken && user._id == currentCar._ownerId ? (
                 <div className="car-details-controls">
                     <Link to={`/catalog/${currentCar._id}/edit`}>
                         <button className="btn">Edit</button>

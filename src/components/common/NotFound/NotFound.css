@@ -1,0 +1,26 @@
+#not-found {
+    text-align: center;
+}
+
+#not-found h1 {
+    margin-bottom: 1rem;
+}
+
+.not-found-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    margin: 2rem 0;
+}
+
+.not-found-links a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+.not-found-links a:hover {
+    text-decoration: underline;
+}

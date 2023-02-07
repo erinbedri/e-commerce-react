@@ -1,5 +1,5 @@
-import { useEffect, useState, useContext } from "react";
-import { Outlet, useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState, useContext, Navigate } from "react";
+import { Outlet, useParams } from "react-router-dom";
 
 import * as carService from "../services/carService";
 import { AuthContext } from "../contexts/AuthContext";
@@ -7,7 +7,6 @@ import { AuthContext } from "../contexts/AuthContext";
 const CarOwner = ({ children }) => {
     const { user } = useContext(AuthContext);
     const { carId } = useParams();
-    const navigate = useNavigate();
 
     const [currentCar, setCurrentCar] = useState({});
 
@@ -22,13 +21,11 @@ const CarOwner = ({ children }) => {
             });
     }, []);
 
-    useEffect(() => {
-        if (user.accessToken && user._id !== currentCar._ownerId) {
-            return navigate("/catalog", { replace: true });
-        }
+    if (user.accessToken && user._id !== currentCar._ownerId) {
+        return <Navigate to={"/catalog"} replace />;
+    }
 
-        return children ? children : <Outlet />;
-    }, []);
+    return children ? children : <Outlet />;
 };
 
 export default CarOwner;

@@ -17,6 +17,7 @@ import Logout from "./components/Logout/Logout";
 import Footer from "./components/Footer/Footer";
 import CarOwner from "./common/CarOwner";
 import AuthenticatedUser from "./common/AuthenticatedUser";
+import NotFound from "./components/404/404";
 
 function App() {
     const [auth, setAuth] = useLocalStorage("auth", {});
@@ -62,6 +63,8 @@ function App() {
                         <Route path="/register" element={<Register />} />
 
                         <Route path="/logout" element={<Logout />} />
+
+                        <Route path="/404" element={<NotFound />} />
                     </Routes>
                 </main>
 

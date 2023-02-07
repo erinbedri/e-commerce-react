@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import "./car-details.css";
 import * as carService from "../../services/carService";
@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function CarDetails() {
     const params = useParams();
+    const navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
 
@@ -16,6 +17,10 @@ export default function CarDetails() {
         carService
             .getOne(params.carId)
             .then((res) => {
+                if (!res._id) {
+                    navigate("/404");
+                }
+
                 setCurrentCar(res);
             })
             .catch((error) => {

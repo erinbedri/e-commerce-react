@@ -13,9 +13,7 @@ export default function Header() {
             <div className="header-wrapper">
                 <div className="header-logo">
                     <Link to="/">
-                        <h1>
-                            <img src="../../../public/cars_logo.png" alt="logo" />
-                        </h1>
+                        <img src="../../../public/cars_logo.jpg" alt="logo" /> Here
                     </Link>
                 </div>
 

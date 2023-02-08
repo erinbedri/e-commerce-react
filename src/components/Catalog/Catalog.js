@@ -43,10 +43,6 @@ export default function Catalog() {
             });
     }, []);
 
-    console.log("page size: ", pageSize);
-    console.log("current page: ", currentPage);
-    console.log("collection size: ", collectionSize);
-
     useEffect(() => {
         if (currentPage > 1) {
             setShowPreviousPageController(true);

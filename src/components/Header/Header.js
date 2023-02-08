@@ -14,18 +14,10 @@ export default function Header() {
                 <div className="header-logo">
                     <Link to="/">
                         <h1>
-                            C <i className="fa-solid fa-car" /> RS
+                            <img src="../../../public/cars_logo.png" alt="logo" />
                         </h1>
                     </Link>
                 </div>
-
-                {/*
-                <div class="header-nav">
-                    <a href="#"><span>ALL</span></a>
-                    <a href="#"><span>MEN</span></a>
-                    <a href="#"><span>WOMEN</span></a>
-                </div>
-                */}
 
                 <div className="header-controls">
                     {user.accessToken ? (

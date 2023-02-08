@@ -7,8 +7,9 @@
     border-bottom: 1.75px solid var(--clr-text-backgroung);
 }
 
-#header .header-logo > a {
-    text-decoration: none;
+#header .header-logo img {
+    width: 175px;
+    padding-bottom: 0.75rem;
 }
 
 #header .header-nav {

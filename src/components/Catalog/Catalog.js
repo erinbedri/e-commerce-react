@@ -30,7 +30,7 @@ export default function Catalog() {
             .catch((error) => {
                 console.log(error);
             });
-    }, [offset, pageSize, sortBy, orderBy, searchParam]);
+    }, [searchParam, sortBy, orderBy, pageSize]);
 
     useEffect(() => {
         carService
@@ -42,6 +42,10 @@ export default function Catalog() {
                 console.log(error);
             });
     }, []);
+
+    console.log("page size: ", pageSize);
+    console.log("current page: ", currentPage);
+    console.log("collection size: ", collectionSize);
 
     useEffect(() => {
         if (currentPage > 1) {

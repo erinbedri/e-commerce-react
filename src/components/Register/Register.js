@@ -21,18 +21,20 @@ export default function Register() {
     const changeHandler = (e) => {
         setFormData((oldData) => ({
             ...oldData,
-            [e.target.name]:
-                e.target.type == "checkbox" ? e.target.checked : e.target.value,
+            [e.target.name]: e.target.type == "checkbox" ? e.target.checked : e.target.value,
         }));
     };
 
-    const isFormValid =
+    const isFormValid = Boolean(
         formData.email &&
-        formData.fname &&
-        formData.lname &&
-        formData.telNumber &&
-        formData.password &&
-        formData.repeatPassword;
+            formData.fname &&
+            formData.lname &&
+            formData.telNumber &&
+            formData.password &&
+            formData.repeatPassword
+    );
+
+    console.log(isFormValid);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -44,13 +46,7 @@ export default function Register() {
 
         if (isFormValid) {
             authService
-                .register(
-                    formData.email,
-                    formData.password,
-                    formData.fname,
-                    formData.lname,
-                    formData.telNumber
-                )
+                .register(formData.email, formData.password, formData.fname, formData.lname, formData.telNumber)
                 .then((res) => {
                     if (res.accessToken) {
                         console.log(res);
@@ -74,33 +70,15 @@ export default function Register() {
                 <label htmlFor="email">
                     <b>Email</b>
                 </label>
-                <input
-                    type="email"
-                    placeholder="Enter Email"
-                    name="email"
-                    onChange={changeHandler}
-                    required
-                />
+                <input type="email" placeholder="Enter Email" name="email" onChange={changeHandler} required />
                 <label htmlFor="fname">
                     <b>First Name</b>
                 </label>
-                <input
-                    type="text"
-                    placeholder="Enter First Name"
-                    name="fname"
-                    onChange={changeHandler}
-                    required
-                />
+                <input type="text" placeholder="Enter First Name" name="fname" onChange={changeHandler} required />
                 <label htmlFor="lname">
                     <b>Last Name</b>
                 </label>
-                <input
-                    type="text"
-                    placeholder="Enter Last Name"
-                    name="lname"
-                    onChange={changeHandler}
-                    required
-                />
+                <input type="text" placeholder="Enter Last Name" name="lname" onChange={changeHandler} required />
                 <label htmlFor="telNumber">
                     <b>Telephone Number</b>
                 </label>
@@ -114,13 +92,7 @@ export default function Register() {
                 <label htmlFor="password">
                     <b>Password</b>
                 </label>
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    onChange={changeHandler}
-                    required
-                />
+                <input type="password" placeholder="Enter Password" name="password" onChange={changeHandler} required />
                 <label htmlFor="repeatPassword">
                     <b>Confirm Password</b>
                 </label>
@@ -131,17 +103,11 @@ export default function Register() {
                     onChange={changeHandler}
                     required
                 />
-                <button
-                    onClick={submitHandler}
-                    className="btn"
-                    type="submit"
-                    disabled={!isFormValid}
-                >
+                <button onClick={submitHandler} className="btn" type="submit" disabled={!isFormValid}>
                     Register
                 </button>
                 <span className="register-link">
-                    Already registered? <Link to="/login">Sign ip</Link>{" "}
-                    instead.
+                    Already registered? <Link to="/login">Sign ip</Link> instead.
                 </span>
             </form>
         </section>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./home.css";
 
@@ -23,7 +24,9 @@ export default function Home() {
                                 Shop from the comfort of your own home with our user-friendly online car sales website.
                                 Browse our extensive inventory and purchase your dream car with confidence.
                             </p>
-                            <button>EXPLORE OUR CATALOG</button>
+                            <Link to={"/catalog"}>
+                                <button>EXPLORE OUR CATALOG</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,11 @@
     margin-top: -26px;
 }
 
+#home i {
+    color: #ca162b;
+    font-size: 2.5rem;
+}
+
 #home .hero .hero-img > img {
     filter: brightness(80%);
     height: 86vh;
@@ -73,4 +78,30 @@
     border: 3px solid #ca162b;
     border-radius: 1.5rem;
     cursor: pointer;
+}
+
+#home .home-desc {
+    margin-top: 2rem;
+}
+
+#home .home-desc .desc-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#home .home-desc .desc-item:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+#home .home-desc .desc-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+#home .home-desc .desc-item p {
+    line-height: 1.75rem;
+}
+
+#home .home-desc .desc-item > i {
+    padding: 1rem;
 }

@@ -5,6 +5,7 @@ import "./App.css";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { AuthContext } from "./contexts/AuthContext";
 import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 import Catalog from "./components/Catalog/Catalog";
 import CatalogOwner from "./components/CatalogOwner/CatalogOwner";
 import CarDetails from "./components/CarDetails/CarDetails";
@@ -36,7 +37,7 @@ function App() {
 
                 <main>
                     <Routes>
-                        <Route path="/" element={<Catalog />} />
+                        <Route path="/" element={<Home />} />
 
                         <Route path="/catalog" element={<Catalog />} />
 

@@ -1,0 +1,76 @@
+#home {
+    margin-top: -26px;
+}
+
+#home .hero .hero-img > img {
+    filter: brightness(80%);
+    height: 86vh;
+}
+
+#home .hero .hero-text-wrapper {
+    position: absolute;
+    top: calc(80vh / 4);
+    left: 5vw;
+}
+
+#home .hero .hero-text-wrapper .hero-title {
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 3px black;
+}
+
+#home .hero .hero-text-wrapper .hero-title > h1 {
+    font-size: 4rem;
+}
+
+#home .hero .hero-text-wrapper .hero-title > span {
+    font-size: 1.25rem;
+}
+
+#home .hero .hero-text-wrapper .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem;
+    background-color: rgb(255, 255, 255, 0.75);
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 10px 1px #000000;
+
+    width: 350px;
+}
+
+#home .hero .hero-text-wrapper .hero-text > h3 {
+    font-size: 1.45rem;
+    margin-bottom: 0.75rem;
+    text-shadow: 1px 1px 1px white;
+}
+
+#home .hero .hero-text-wrapper .hero-text > p {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    text-shadow: 1px 1px 1px white;
+}
+
+#home .hero .hero-text-wrapper .hero-text > button {
+    background-color: #ca162b;
+    color: white;
+    padding: 0.5rem 2rem;
+
+    border: 3px solid transparent;
+    border-radius: 1.5rem;
+    cursor: pointer;
+
+    transition: 0.2 ease-in-out;
+}
+
+#home .hero .hero-text-wrapper .hero-text > button:hover {
+    background-color: white;
+    color: #ca162b;
+    padding: 0.5rem 2rem;
+
+    border: 3px solid #ca162b;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}

@@ -26,13 +26,13 @@ export default function Header() {
                             <NavLink to="#">
                                 <i className="fa-solid fa-user" />
                             </NavLink>
-                            <NavLink to="/">Catalog</NavLink>
                             <NavLink to="/catalog/car/add">Add Car</NavLink>
                             <NavLink to="/catalog/owner">My Cars</NavLink>
                             <NavLink to="/logout">Logout</NavLink>
                         </>
                     ) : (
                         <>
+                            <NavLink to="/catalog">Catalog</NavLink>
                             <NavLink to="/login">Sign In</NavLink>
                             <NavLink to="/register">Sign Up</NavLink>
                         </>

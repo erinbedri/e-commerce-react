@@ -7,15 +7,19 @@ import CarItem from "../CarItem/CarItem";
 
 export default function Catalog() {
     const [cars, setCars] = useState([]);
+
     const [pageSize, setPageSize] = useState(5);
     const [collectionSize, setCollectionSize] = useState(0);
+    const totalPages = Math.ceil(collectionSize / pageSize);
     const [currentPage, setCurrentPage] = useState(1);
     const [offset, setOffset] = useState(0);
-    const totalPages = Math.ceil(collectionSize / pageSize);
-    const [sortBy, setSortBy] = useState("manufacturer");
-    const [orderBy, setOrderBy] = useState("");
+
+    const [showPreviousPageController, setShowPreviousPageController] = useState(false);
+    const [showNextPageController, setShowNextPageController] = useState(true);
 
     const [searchParam, setSearchParam] = useState("");
+    const [sortBy, setSortBy] = useState("manufacturer");
+    const [orderBy, setOrderBy] = useState("");
 
     useEffect(() => {
         carService
@@ -38,6 +42,22 @@ export default function Catalog() {
                 console.log(error);
             });
     }, []);
+
+    useEffect(() => {
+        if (currentPage > 1) {
+            setShowPreviousPageController(true);
+        } else {
+            setShowPreviousPageController(false);
+        }
+    }, [currentPage]);
+
+    useEffect(() => {
+        if (currentPage == totalPages) {
+            setShowNextPageController(false);
+        } else {
+            setShowNextPageController(true);
+        }
+    }, [currentPage]);
 
     const previousPageHandler = () => {
         if (currentPage > 1) {
@@ -125,15 +145,17 @@ export default function Catalog() {
                 </div>
 
                 <div className="pagination-controls">
-                    <i onClick={firstPageHandler} className="fa-solid fa-angles-left" />
-                    <i onClick={previousPageHandler} className="fa-solid fa-chevron-left" />
+                    {showPreviousPageController && <i onClick={firstPageHandler} className="fa-solid fa-angles-left" />}
+                    {showPreviousPageController && (
+                        <i onClick={previousPageHandler} className="fa-solid fa-chevron-left" />
+                    )}
 
                     <h3>
                         Page {currentPage} of {totalPages}
                     </h3>
 
-                    <i onClick={nextPageHandler} className="fa-solid fa-chevron-right" />
-                    <i onClick={lastPageHandler} className="fa-solid fa-angles-right" />
+                    {showNextPageController && <i onClick={nextPageHandler} className="fa-solid fa-chevron-right" />}
+                    {showNextPageController && <i onClick={lastPageHandler} className="fa-solid fa-angles-right" />}
 
                     {currentPage == 1 && (
                         <select

@@ -13,7 +13,7 @@ export default function Header() {
             <div className="header-wrapper">
                 <div className="header-logo">
                     <Link to="/">
-                        <img src="../../../public/cars_logo.jpg" alt="logo" /> Here
+                        <img src="%PUBLIC_URL%/cars_logo.png" alt="logo" /> Here
                     </Link>
                 </div>
 

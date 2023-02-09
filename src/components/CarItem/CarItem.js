@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function CarItem({ car }) {
+    const { user } = useContext(AuthContext);
+    const owner = user._id === car._ownerId;
+
+    console.log(user._id);
+    console.log(car._ownerId);
+
     return (
-        <div className="catalog-item">
+        <div className="catalog-item" style={owner ? { backgroundColor: "#ffedef" } : null}>
             <img src={car.imageUrl} alt="car" />
             <span>{car.manufacturer}</span>
             <span>{car.model}</span>

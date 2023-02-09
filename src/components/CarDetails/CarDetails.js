@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import "./car-details.css";
 import * as carService from "../../services/carService";
 import { AuthContext } from "../../contexts/AuthContext";
+import { formatDate } from "../../helpers/formatDate";
 
 export default function CarDetails() {
     const params = useParams();
@@ -72,6 +73,14 @@ export default function CarDetails() {
                     </span>
                     <span className="with-line-breaks">
                         <b>Description: </b> {currentCar.description}
+                    </span>
+                    <span>
+                        <b>Online Since: </b>
+                        {formatDate(currentCar._createdOn)}
+                    </span>
+                    <span>
+                        <b>Last Updated: </b>
+                        {formatDate(currentCar._updatedOn)}
                     </span>
 
                     <h2>

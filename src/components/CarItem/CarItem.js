@@ -5,9 +5,6 @@ export default function CarItem({ car }) {
     const { user } = useContext(AuthContext);
     const owner = user._id === car._ownerId;
 
-    console.log(user._id);
-    console.log(car._ownerId);
-
     return (
         <div className="catalog-item" style={owner ? { backgroundColor: "#ffedef" } : null}>
             <img src={car.imageUrl} alt="car" />

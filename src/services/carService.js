@@ -16,7 +16,7 @@ export const getAll = (searchParam, sortBy, orderBy, offset, pageSize) =>
             `&pageSize=${pageSize}`
     );
 
-export const getAllMyCars = (ownerId) => request.get(`${baseUrl}?sortBy=_createdOn%20desc?distinct=${ownerId}`);
+export const getAllMyCars = () => request.get(`${baseUrl}`);
 
 export const getOne = (carId) => request.get(`${baseUrl}/${carId}`);
 

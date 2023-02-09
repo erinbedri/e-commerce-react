@@ -12,14 +12,16 @@ export default function CatalogOwner() {
 
     useEffect(() => {
         carService
-            .getAllMyCars(user._id)
+            .getAllMyCars()
             .then((res) => {
-                setMyCars(res);
+                setMyCars(res.filter((c) => c._ownerId === user._id));
             })
             .catch((error) => {
                 console.log(error);
             });
     }, []);
+
+    console.log(myCars);
 
     return (
         <section id="catalog" className="container">

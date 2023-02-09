@@ -16,7 +16,7 @@ export default function Weather() {
 
             if (lat !== "" && long !== "") {
                 await fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_NOT_SECRET_CODE}&units=metric`
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_WEATHER_APP_API_KEY}&units=metric`
                 )
                     .then((res) => res.json())
                     .then((weatherData) => {

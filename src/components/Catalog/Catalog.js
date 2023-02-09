@@ -30,7 +30,7 @@ export default function Catalog() {
             .catch((error) => {
                 console.log(error);
             });
-    }, [searchParam, sortBy, orderBy, pageSize]);
+    }, [searchParam, sortBy, orderBy, pageSize, currentPage]);
 
     useEffect(() => {
         carService

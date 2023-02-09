@@ -30,9 +30,14 @@ export default function CarDetails() {
 
     return (
         <section id="details" className="container">
-            <h2 className="title">Car Details</h2>
+            <h2 className="title">
+                {currentCar.year} {currentCar.manufacturer} {currentCar.model}
+            </h2>
             <div className="details-wrapper">
                 <div className="details-text">
+                    <h2>
+                        <u>Basics</u>
+                    </h2>
                     <span>
                         <b>Manufacturer: </b>
                         {currentCar.manufacturer}
@@ -53,6 +58,10 @@ export default function CarDetails() {
                         <b>Year: </b>
                         {currentCar.year}
                     </span>
+
+                    <h2>
+                        <u>Details & Features</u>
+                    </h2>
                     <span>
                         <b>Price: </b>
                         EUR {Number(currentCar.price).toLocaleString()}
@@ -64,13 +73,21 @@ export default function CarDetails() {
                     <span className="with-line-breaks">
                         <b>Description: </b> {currentCar.description}
                     </span>
+
+                    <h2>
+                        <u>Seller's Info</u>
+                    </h2>
                     <span>
                         <b>Contact Person: </b>
-                        {user.accessToken ? `${currentCar.fname} ${currentCar.lname}` : `Please login to reveal`}
+                        {user.accessToken ? (
+                            `${currentCar.fname} ${currentCar.lname}`
+                        ) : (
+                            <Link to={"/login"}>Login to reveal</Link>
+                        )}
                     </span>
                     <span>
                         <b>Telephone Number: </b>
-                        {user.accessToken ? currentCar.telNumber : `Please login to reveal`}
+                        {user.accessToken ? currentCar.telNumber : <Link to={"/login"}>Login to reveal</Link>}
                     </span>
                 </div>
                 <div className="details-img">

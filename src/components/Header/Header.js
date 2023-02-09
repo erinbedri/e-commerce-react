@@ -18,6 +18,8 @@ export default function Header() {
                     </NavLink>
                 </div>
 
+                <Weather />
+
                 <div className="header-controls">
                     <NavLink to="/" activeclassname="active">
                         Home

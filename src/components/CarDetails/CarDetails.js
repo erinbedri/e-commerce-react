@@ -50,6 +50,10 @@ export default function CarDetails() {
                         <b>Category: </b>
                         {currentCar.category}
                     </span>
+
+                    <h2>
+                        <u>Details & Features</u>
+                    </h2>
                     <span>
                         <b>Mileage: </b>
                         {Number(currentCar.mileage).toLocaleString()} km
@@ -58,10 +62,6 @@ export default function CarDetails() {
                         <b>Year: </b>
                         {currentCar.year}
                     </span>
-
-                    <h2>
-                        <u>Details & Features</u>
-                    </h2>
                     <span>
                         <b>Price: </b>
                         EUR {Number(currentCar.price).toLocaleString()}

@@ -80,7 +80,7 @@ export default function CarDetails() {
                     </span>
                     <span>
                         <b>Last Updated: </b>
-                        {formatDate(currentCar._updatedOn)}
+                        {currentCar._updatedOn ? formatDate(currentCar._updatedOn) : "No changes have been made yet"}
                     </span>
 
                     <h2>

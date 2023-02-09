@@ -16,7 +16,7 @@ export default function Weather() {
 
             if (lat !== "" && long !== "") {
                 await fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=e0933f3fd88281781aef985d97dbdf20&units=metric`
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_NOT_SECRET_CODE}&units=metric`
                 )
                     .then((res) => res.json())
                     .then((weatherData) => {
@@ -27,8 +27,6 @@ export default function Weather() {
 
         fetchData();
     }, [lat, long]);
-
-    console.log(weatherData);
 
     return (
         <div>

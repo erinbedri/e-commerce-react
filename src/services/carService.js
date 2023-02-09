@@ -10,7 +10,8 @@ export const getAll = (searchParam, sortBy, orderBy, offset, pageSize) =>
             `?where=` +
             `manufacturer%20like%20%22${searchParam}%22%20OR%20` +
             `model%20like%20%22${searchParam}%22%20OR%20` +
-            `category%20like%20%22${searchParam}%22` +
+            `category%20like%20%22${searchParam}%22%20OR%20` +
+            `location%20like%20%22${searchParam}%22` +
             `&sortBy=${sortBy}${orderBy}` +
             `&offset=${offset}` +
             `&pageSize=${pageSize}`

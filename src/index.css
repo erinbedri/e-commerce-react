@@ -80,11 +80,11 @@ i:hover {
     flex-direction: column;
 }
 
-.form > label {
+.form label {
     margin-bottom: 0.75rem;
 }
 
-.form > input {
+.form input {
     margin-bottom: 1.5rem;
     border-radius: 1.5rem;
     border: 1px solid black;
@@ -92,7 +92,7 @@ i:hover {
     text-indent: 0.5rem;
 }
 
-.form > textarea {
+.form textarea {
     margin-bottom: 1.5rem;
     border-radius: 0.75rem;
     border: 1px solid;

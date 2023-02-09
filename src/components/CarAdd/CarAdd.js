@@ -153,7 +153,7 @@ export default function CarAdd() {
                 </label>
                 <input
                     type="number"
-                    placeholder="Enter Mileage"
+                    placeholder="Enter Mileage only in KM"
                     name="mileage"
                     onChange={changeHandler}
                     onBlur={blurHandler}
@@ -168,7 +168,7 @@ export default function CarAdd() {
                 </label>
                 <input
                     type="number"
-                    placeholder="Enter Year"
+                    placeholder="Enter Year of Manufacturing"
                     name="year"
                     onChange={changeHandler}
                     onBlur={blurHandler}
@@ -198,7 +198,7 @@ export default function CarAdd() {
                 </label>
                 <input
                     type="number"
-                    placeholder="Enter Price"
+                    placeholder="Enter Price only in EUR"
                     name="price"
                     onChange={changeHandler}
                     onBlur={blurHandler}

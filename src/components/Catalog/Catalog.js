@@ -104,7 +104,7 @@ export default function Catalog() {
                         type="search"
                         name="search"
                         className="search-input"
-                        placeholder="Search by Manufacturer..."
+                        placeholder="Search..."
                         onChange={searchHandler}
                     />
                 </div>

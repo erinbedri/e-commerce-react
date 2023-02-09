@@ -6,7 +6,14 @@ export const getCollectionSize = () => request.get(`${baseUrl}/?count`);
 
 export const getAll = (searchParam, sortBy, orderBy, offset, pageSize) =>
     request.get(
-        `${baseUrl}?where=manufacturer%20like%20%22${searchParam}%22&sortBy=${sortBy}${orderBy}&offset=${offset}&pageSize=${pageSize}`
+        `${baseUrl}` +
+            `?where=` +
+            `manufacturer%20like%20%22${searchParam}%22%20OR%20` +
+            `model%20like%20%22${searchParam}%22%20OR%20` +
+            `category%20like%20%22${searchParam}%22` +
+            `&sortBy=${sortBy}${orderBy}` +
+            `&offset=${offset}` +
+            `&pageSize=${pageSize}`
     );
 
 export const getAllMyCars = (ownerId) => request.get(`${baseUrl}?sortBy=_createdOn%20desc?distinct=${ownerId}`);

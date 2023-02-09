@@ -18,8 +18,7 @@ export default function Login() {
     const changeHandler = (e) => {
         setFormData((oldData) => ({
             ...oldData,
-            [e.target.name]:
-                e.target.type == "checkbox" ? e.target.checked : e.target.value,
+            [e.target.name]: e.target.type == "checkbox" ? e.target.checked : e.target.value,
         }));
     };
 
@@ -51,28 +50,20 @@ export default function Login() {
                 <label htmlFor="email">
                     <b>Email</b>
                 </label>
-                <input
-                    type="email"
-                    placeholder="Enter Email"
-                    name="email"
-                    onChange={changeHandler}
-                    required
-                />
+                <input type="email" placeholder="Enter Email" name="email" onChange={changeHandler} required />
                 <label htmlFor="password">
                     <b>Password</b>
                 </label>
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    onChange={changeHandler}
-                    required
-                />
+                <input type="password" placeholder="Enter Password" name="password" onChange={changeHandler} required />
                 <button onClick={submitHandler} className="btn" type="submit">
                     Login
                 </button>
                 <span className="login-link">
-                    Not registered? <Link to="/register">Sign up</Link> instead.
+                    Not registered?{" "}
+                    <Link to="/register" className="link">
+                        Sign up
+                    </Link>{" "}
+                    instead.
                 </span>
             </form>
         </section>

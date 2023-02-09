@@ -4,7 +4,8 @@
 :root {
     --clr-text-main: #393e41;
     --clr-text-backgroung: #d3d0cb;
-    --clr-icon: #e7bb41;
+    --clr-icon: #ca162b;
+    --clr-bnt: #ca162b;
 }
 
 /* GENERAL */
@@ -27,29 +28,39 @@ h6 {
 }
 
 .btn {
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
-    border: 1px solid;
-    border-radius: 0.75rem;
-    background-color: var(--clr-text-main);
+    background-color: var(--clr-bnt);
     color: white;
+    padding: 0.5rem 2rem;
+
+    border: 3px solid transparent;
+    border-radius: 1.5rem;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+
+    transition: 0.2 ease-in-out;
 }
 
 .btn:hover {
-    background-color: var(--clr-icon);
-    color: var(--clr-text-main);
+    background-color: white;
+    color: var(--clr-bnt);
+    padding: 0.5rem 2rem;
+
+    border: 3px solid var(--clr-bnt);
+    border-radius: 1.5rem;
+    cursor: pointer;
 }
 
 .btn:disabled {
-    background: #999;
+    background: var(--clr-text-backgroung);
     color: #555;
     cursor: not-allowed;
 }
 
 a {
     color: var(--clr-text-main);
+}
+
+.link {
+    color: var(--clr-icon);
 }
 
 i {
@@ -75,7 +86,7 @@ i:hover {
 
 .form > input {
     margin-bottom: 1.5rem;
-    border-radius: 0.75rem;
+    border-radius: 1.5rem;
     border: 1px solid black;
     padding: 0.5rem;
     text-indent: 0.5rem;

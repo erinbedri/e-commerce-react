@@ -107,7 +107,11 @@ export default function Register() {
                     Register
                 </button>
                 <span className="register-link">
-                    Already registered? <Link to="/login">Sign ip</Link> instead.
+                    Already registered?{" "}
+                    <Link to="/login" className="link">
+                        Sign ip
+                    </Link>{" "}
+                    instead.
                 </span>
             </form>
         </section>

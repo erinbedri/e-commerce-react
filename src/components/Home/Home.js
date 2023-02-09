@@ -25,7 +25,7 @@ export default function Home() {
                                 Browse our extensive inventory and purchase your dream car with confidence.
                             </p>
                             <Link to={"/catalog"}>
-                                <button>EXPLORE OUR CATALOG</button>
+                                <button className="btn">EXPLORE OUR CATALOG</button>
                             </Link>
                         </div>
                     </div>

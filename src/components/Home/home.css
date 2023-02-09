@@ -58,28 +58,6 @@
     text-shadow: 1px 1px 1px white;
 }
 
-#home .hero .hero-text-wrapper .hero-text button {
-    background-color: #ca162b;
-    color: white;
-    padding: 0.5rem 2rem;
-
-    border: 3px solid transparent;
-    border-radius: 1.5rem;
-    cursor: pointer;
-
-    transition: 0.2 ease-in-out;
-}
-
-#home .hero .hero-text-wrapper .hero-text button:hover {
-    background-color: white;
-    color: #ca162b;
-    padding: 0.5rem 2rem;
-
-    border: 3px solid #ca162b;
-    border-radius: 1.5rem;
-    cursor: pointer;
-}
-
 #home .home-desc {
     margin-top: 2rem;
 }

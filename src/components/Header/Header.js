@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import "./header.css";
 import { AuthContext } from "../../contexts/AuthContext";
+import Weather from "../Weather/Weather";
 
 export default function Header() {
     const { user } = useContext(AuthContext);

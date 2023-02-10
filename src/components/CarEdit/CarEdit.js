@@ -40,8 +40,7 @@ export default function CarEdit() {
     const changeHandler = (e) => {
         setCurrentCar((oldData) => ({
             ...oldData,
-            [e.target.name]:
-                e.target.type == "checkbox" ? e.target.checked : e.target.value,
+            [e.target.name]: e.target.type == "checkbox" ? e.target.checked : e.target.value,
         }));
     };
 
@@ -81,10 +80,7 @@ export default function CarEdit() {
     return (
         <section id="login" className="container">
             <h2 className="title">Edit Car</h2>
-            {error &&
-                [...new Set(error)].map((e) => (
-                    <div className="error">{e}</div>
-                ))}
+            {error && [...new Set(error)].map((e) => <div className="error">{e}</div>)}
 
             <form className="form">
                 <label htmlFor="manufacturer">
@@ -109,17 +105,29 @@ export default function CarEdit() {
                     onChange={changeHandler}
                     required
                 />
+
                 <label htmlFor="category">
                     <b>Category</b>
                 </label>
-                <input
+                <select
                     type="text"
-                    placeholder="Enter Category"
                     name="category"
                     defaultValue={currentCar.category}
                     onChange={changeHandler}
                     required
-                />
+                >
+                    <option value="">--- Select Category ---</option>
+                    <option value="Electric Car">Electric Car</option>
+                    <option value="Cabriolet / Roadster">Cabriolet / Roadster</option>
+                    <option value="Estate Car">Estate Car</option>
+                    <option value="Saloon">Saloon</option>
+                    <option value="Small Car">Small Car</option>
+                    <option value="Sports Car / Coupe">Sports Car / Coupe</option>
+                    <option value="SUV / Off-road Vehicle / Truck">SUV / Off-road Vehicle / Truck</option>{" "}
+                    <option value="Van / Minibus">Van / Minibus</option>
+                    <option value="Other">Other</option>
+                </select>
+
                 <label htmlFor="mileage">
                     <b>Mileage</b>
                 </label>
@@ -190,7 +198,7 @@ export default function CarEdit() {
                     rows={10}
                 />
                 <button onClick={submitHandler} className="btn" type="submit">
-                    Add
+                    Edit
                 </button>
             </form>
         </section>

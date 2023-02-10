@@ -137,15 +137,24 @@ export default function CarAdd() {
                 <label htmlFor="category" className={formError.category ? "form-error-label" : ""}>
                     <b>Category</b>
                 </label>
-                <input
-                    type="text"
-                    placeholder="Enter Category"
+                <select
                     name="category"
-                    onChange={changeHandler}
-                    onBlur={blurHandler}
-                    className={formError.category ? "form-error-input" : ""}
                     required
-                />
+                    onBlur={blurHandler}
+                    onChange={changeHandler}
+                    className={formError.category ? "form-error-input" : ""}
+                >
+                    <option value="">--- Select Category ---</option>
+                    <option value="Electric Car">Electric Car</option>
+                    <option value="Cabriolet / Roadster">Cabriolet / Roadster</option>
+                    <option value="Estate Car">Estate Car</option>
+                    <option value="Saloon">Saloon</option>
+                    <option value="Small Car">Small Car</option>
+                    <option value="Sports Car / Coupe">Sports Car / Coupe</option>
+                    <option value="SUV / Off-road Vehicle / Truck">SUV / Off-road Vehicle / Truck</option>{" "}
+                    <option value="Van / Minibus">Van / Minibus</option>
+                    <option value="Other">Other</option>
+                </select>
                 <p className="form-error-message">{formError.category ? formError.category : ""}</p>
 
                 <label htmlFor="mileage" className={formError.mileage ? "form-error-label" : ""}>

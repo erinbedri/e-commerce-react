@@ -89,16 +89,116 @@
 }
 
 @media (min-width: 1240px) and (max-width: 1440px) {
+    #home .hero .hero-img > img {
+        filter: brightness(80%);
+        height: 70vh;
+        width: 100%;
+    }
+
+    #home .hero .hero-text-wrapper {
+        position: absolute;
+        top: calc(80vh / 5);
+        left: 5vw;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1240px) {
+    #home .hero .hero-img > img {
+        filter: brightness(80%);
+        height: 60vh;
+        width: 100%;
+    }
+
+    #home .hero .hero-text-wrapper {
+        position: absolute;
+        top: calc(80vh / 6);
+        left: 5vw;
+    }
+
+    #home .hero .hero-text-wrapper .hero-text {
+        width: 450px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+    #home .hero .hero-img > img {
+        filter: brightness(80%);
+        height: 50vh;
+        width: 100%;
+    }
+
+    #home .hero .hero-text-wrapper {
+        position: absolute;
+        top: calc(80vh / 6);
+        left: 0vw;
+    }
+
+    #home .hero .hero-text-wrapper .hero-text {
+        padding: 1rem;
+        margin: 0 auto;
+        width: 75%;
+    }
+
+    #home .hero .hero-text-wrapper .hero-title > h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    #home .hero .hero-text-wrapper .hero-title > span {
+        display: none;
+    }
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
+    #home .hero .hero-img > img {
+        filter: brightness(80%);
+        height: 40vh;
+        width: 100%;
+    }
+
+    #home .hero .hero-text-wrapper {
+        position: absolute;
+        top: calc(80vh / 2.75);
+        left: 5vw;
+    }
+
+    #home .hero .hero-text-wrapper .hero-text {
+        display: none;
+    }
+
+    #home .hero .hero-text-wrapper .hero-title > h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    #home .hero .hero-text-wrapper .hero-title > span {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
+    #home .hero .hero-img > img {
+        filter: brightness(80%);
+        height: 30vh;
+        width: 100%;
+    }
+
+    #home .hero .hero-text-wrapper {
+        position: absolute;
+        top: calc(80vh / 2.75);
+        left: 0vw;
+    }
+
+    #home .hero .hero-text-wrapper .hero-text {
+        display: none;
+    }
+
+    #home .hero .hero-text-wrapper .hero-title > h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    #home .hero .hero-text-wrapper .hero-title > span {
+        display: none;
+    }
 }

@@ -107,6 +107,7 @@ export default function Catalog() {
                         placeholder="Search..."
                         onChange={searchHandler}
                     />
+                    <button type="submit" disabled style={{ display: "none" }} aria-hidden="true"></button>
                 </div>
             </form>
 

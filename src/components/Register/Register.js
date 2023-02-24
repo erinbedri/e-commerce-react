@@ -66,7 +66,7 @@ export default function Register() {
             <h2 className="title">Sign Up</h2>
             {error && <div className="error">{error}</div>}
 
-            <form className="form">
+            <form className="form" onSubmit={submitHandler}>
                 <label htmlFor="email">
                     <b>Email</b>
                 </label>
@@ -103,7 +103,7 @@ export default function Register() {
                     onChange={changeHandler}
                     required
                 />
-                <button onClick={submitHandler} className="btn" type="submit" disabled={!isFormValid}>
+                <button className="btn" type="submit" disabled={!isFormValid}>
                     Register
                 </button>
                 <span className="register-link">

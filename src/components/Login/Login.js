@@ -46,7 +46,7 @@ export default function Login() {
             <h2 className="title">Sign In</h2>
             {error && <div className="error">{error}</div>}
 
-            <form className="form">
+            <form className="form" onSubmit={submitHandler}>
                 <label htmlFor="email">
                     <b>Email</b>
                 </label>
@@ -55,7 +55,7 @@ export default function Login() {
                     <b>Password</b>
                 </label>
                 <input type="password" placeholder="Enter Password" name="password" onChange={changeHandler} required />
-                <button onClick={submitHandler} className="btn" type="submit">
+                <button className="btn" type="submit">
                     Login
                 </button>
                 <span className="login-link">

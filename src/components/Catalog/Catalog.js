@@ -118,38 +118,52 @@ export default function Catalog() {
             </form>
 
             <section id="catalog" className="container">
-                <div className="catalog-list">
-                    <div className="catalog-header">
-                        <span></span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Manufacturer
-                        </span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Model
-                        </span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Category
-                        </span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Mileage
-                        </span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Year
-                        </span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Price
-                        </span>
-                        <span onClick={sortByHandler}>
-                            <i className="fa-solid fa-sort" /> Location
-                        </span>
-                    </div>
+                {cars.length > 1 ? (
+                    <div className="catalog-list">
+                        <div className="catalog-header">
+                            <span></span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Manufacturer
+                            </span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Model
+                            </span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Category
+                            </span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Mileage
+                            </span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Year
+                            </span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Price
+                            </span>
+                            <span onClick={sortByHandler}>
+                                <i className="fa-solid fa-sort" /> Location
+                            </span>
+                        </div>
 
-                    {cars.map((c) => (
-                        <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
-                            <CarItem car={c} />
-                        </Link>
-                    ))}
-                </div>
+                        {cars.map((c) => (
+                            <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
+                                <CarItem car={c} />
+                            </Link>
+                        ))}
+                    </div>
+                ) : (
+                    <>
+                        <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
+                            There are no cars in the cataloq right now!
+                        </h3>
+                        <p style={{ textAlign: "center", marginTop: "1rem" }}>
+                            <Link to={"/catalog/car/add"}>
+                                <b>Sell cars</b>
+                            </Link>{" "}
+                            now.
+                        </p>
+                    </>
+                )}
 
                 <div className="pagination-controls">
                     {showPreviousPageController && <i onClick={firstPageHandler} className="fa-solid fa-angles-left" />}

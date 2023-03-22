@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./home.css";
+import UserTestimonial from "./UserTestimonial";
+import { userTestimonials } from "./userTestimonials";
 
 export default function Home() {
     return (
@@ -85,43 +87,9 @@ export default function Home() {
                 <div className="home-testimonials container">
                     <h2>What Our Customers Say</h2>
                     <div className="testimonials-list">
-                        <div className="testimonials-item">
-                            <p>
-                                "I was skeptical about using an online platform to buy a car, but I was pleasantly
-                                surprised by the level of support and security offered by Cars. The entire experience
-                                was fantastic and I would definitely use the platform again in the future."
-                            </p>
-                            <img
-                                src="https://square-vn.com/app/dscms/assets/images/person-1.jpg?v=1653932875"
-                                alt="testimonial image"
-                            />
-                            <h3>Roger Santiago</h3>
-                        </div>
-                        <div className="testimonials-item">
-                            <p>
-                                "I was looking for a new car and stumbled upon Cars. I was amazed by the variety of
-                                listings and the detailed information provided. I was able to find my dream car and the
-                                entire buying process was seamless. Thank you, Cars!"
-                            </p>
-                            <img
-                                src="https://static01.nyt.com/images/2022/05/19/opinion/firstpersonPromo/firstpersonPromo-mediumSquareAt3X.jpg"
-                                alt="testimonial image"
-                            />
-                            <h3>Maria Petrowa</h3>
-                        </div>
-
-                        <div className="testimonials-item">
-                            <p>
-                                "I've been a car enthusiast for years and was thrilled to discover the Cars community.
-                                The platform makes it easy to connect with other car enthusiasts and find amazing
-                                vehicles. I'm so glad I found this app!"
-                            </p>
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKRlKoajg43IQzYuAfQ_hcvvgDfwe9aELgbQ&usqp=CAU"
-                                alt="testimonial image"
-                            />
-                            <h3>Mark Antonio</h3>
-                        </div>
+                        {userTestimonials.map((user) => (
+                            <UserTestimonial {...user} key={user.id} />
+                        ))}
                     </div>
                 </div>
             </section>

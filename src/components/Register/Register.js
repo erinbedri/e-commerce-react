@@ -34,8 +34,6 @@ export default function Register() {
             formData.repeatPassword
     );
 
-    console.log(isFormValid);
-
     const submitHandler = (e) => {
         e.preventDefault();
 

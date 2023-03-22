@@ -7,7 +7,7 @@ const AuthenticatedUser = ({ children }) => {
     const { user } = useContext(AuthContext);
 
     if (!user.accessToken) {
-        return <Navigate to={"/catalog"} replace />;
+        return <Navigate to={"/"} replace />;
     }
 
     return children ? children : <Outlet />;

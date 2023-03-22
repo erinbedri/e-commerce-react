@@ -8,6 +8,7 @@ import Weather from "../Weather/Weather";
 
 export default function Header() {
     const { user } = useContext(AuthContext);
+    const [isActive, setActive] = useState("");
 
     return (
         <header id="header" className="container">
@@ -22,38 +23,50 @@ export default function Header() {
 
                 <div className="header-controls">
                     <NavLink to="/" activeclassname="active">
-                        Home
+                        <span onClick={() => setActive("")}>Home</span>
                     </NavLink>
                     <NavLink to="/catalog" end activeclassname="active">
-                        Catalog
+                        <span onClick={() => setActive("")}>Catalog</span>
                     </NavLink>
                     {user.accessToken ? (
                         <>
                             <NavLink to="/catalog/car/add" activeclassname="active">
-                                Sell Car
+                                <span onClick={() => setActive("")}>Sell Car</span>
                             </NavLink>
                             <NavLink to="/catalog/owner" activeclassname="active">
                                 <div className="tooltip">
-                                    <i className="fa-solid fa-square-parking" />
-                                    <span class="tooltiptext">My Cars</span>
+                                    <i
+                                        className="fa-solid fa-square-parking"
+                                        style={isActive === "My Cars" ? { color: "#ca162b" } : {}}
+                                        onClick={() => setActive("My Cars")}
+                                    />
+                                    <span className="tooltiptext">My Cars</span>
                                 </div>
                             </NavLink>
                             <NavLink to="/favourites" activeclassname="active">
                                 <div className="tooltip">
-                                    <i className="fa-solid fa-star" />
-                                    <span class="tooltiptext">Favourites</span>
+                                    <i
+                                        className="fa-solid fa-star"
+                                        style={isActive === "Favourites" ? { color: "#ca162b" } : {}}
+                                        onClick={() => setActive("Favourites")}
+                                    />
+                                    <span className={`tooltiptext`}>Favourites</span>
                                 </div>
                             </NavLink>
                             <NavLink to="/profile" activeclassname="active">
                                 <div className="tooltip">
-                                    <i className="fa-solid fa-user" />
-                                    <span class="tooltiptext">Profile</span>
+                                    <i
+                                        className="fa-solid fa-user"
+                                        style={isActive === "Profile" ? { color: "#ca162b" } : {}}
+                                        onClick={() => setActive("Profile")}
+                                    />
+                                    <span className="tooltiptext">Profile</span>
                                 </div>
                             </NavLink>
                             <NavLink to="/logout" activeclassname="active">
                                 <div className="tooltip">
                                     <i className="fa-solid fa-right-from-bracket" />
-                                    <span class="tooltiptext">Logout</span>
+                                    <span className="tooltiptext">Logout</span>
                                 </div>
                             </NavLink>
                         </>

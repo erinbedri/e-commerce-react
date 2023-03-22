@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 
 import "./car-details.css";
 import * as carService from "../../services/carService";
@@ -9,10 +9,12 @@ import { formatDate } from "../../helpers/formatDate";
 export default function CarDetails() {
     const params = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { user } = useContext(AuthContext);
 
     const [currentCar, setCurrentCar] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         carService
@@ -23,11 +25,16 @@ export default function CarDetails() {
                 }
 
                 setCurrentCar(res);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);
             });
     }, []);
+
+    if (isLoading) {
+        return <div id="loader"></div>;
+    }
 
     return (
         <section id="details" className="container">
@@ -91,12 +98,20 @@ export default function CarDetails() {
                         {user.accessToken ? (
                             `${currentCar.fname} ${currentCar.lname}`
                         ) : (
-                            <Link to={"/login"}>Login to reveal</Link>
+                            <NavLink to={`/login`} state={{ prev: location.pathname }}>
+                                Login to reveal
+                            </NavLink>
                         )}
                     </span>
                     <span>
                         <b>Telephone Number: </b>
-                        {user.accessToken ? currentCar.telNumber : <Link to={"/login"}>Login to reveal</Link>}
+                        {user.accessToken ? (
+                            currentCar.telNumber
+                        ) : (
+                            <NavLink to={`/login`} state={{ prev: location.pathname }}>
+                                Login to reveal
+                            </NavLink>
+                        )}
                     </span>
                 </div>
                 <div className="details-img">

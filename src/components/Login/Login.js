@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import "./login.css";
 import * as authService from "../../services/authService";
@@ -8,8 +8,9 @@ import { AuthContext } from "../../contexts/AuthContext";
 export default function Login() {
     const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [error, setError] = useState("");
+    const { state } = useLocation();
 
+    const [error, setError] = useState("");
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -34,7 +35,11 @@ export default function Login() {
                 }
 
                 userLogin(authData);
-                navigate("/");
+                if (state) {
+                    navigate(state.prev);
+                } else {
+                    navigate("/");
+                }
             })
             .catch(() => {
                 console.log("error");

@@ -41,7 +41,6 @@ export default function CarDetails() {
         setIsLiked(!isLiked);
     };
 
-    console.log("liked: ", isLiked);
     return (
         <section id="details" className="container">
             <h2 className="title">

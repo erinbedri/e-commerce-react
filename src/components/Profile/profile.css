@@ -1,0 +1,12 @@
+.profile-details {
+    text-align: center;
+}
+
+.profile-details i {
+    font-size: 7rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-details p:not(:last-child) {
+    margin-bottom: 0.75rem;
+}

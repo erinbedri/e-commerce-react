@@ -17,6 +17,7 @@ import Register from "./components/Register/Register";
 import Logout from "./components/Logout/Logout";
 import Footer from "./components/Footer/Footer";
 import CarOwner from "./common/CarOwner";
+import Profile from "./components/Profile/Profile";
 import AuthenticatedUser from "./common/AuthenticatedUser";
 import NotFound from "./components/common/NotFound/NotFound";
 
@@ -62,6 +63,10 @@ function App() {
                         <Route path="/login" element={<Login />} />
 
                         <Route path="/register" element={<Register />} />
+
+                        <Route element={<AuthenticatedUser />}>
+                            <Route path="/profile" element={<Profile />} />
+                        </Route>
 
                         <Route path="/logout" element={<Logout />} />
 

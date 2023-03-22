@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./header.css";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -34,6 +34,9 @@ export default function Header() {
                             </NavLink>
                             <NavLink to="/catalog/owner" activeclassname="active">
                                 My Cars
+                            </NavLink>
+                            <NavLink to="/profile" activeclassname="active">
+                                <i className="fa-solid fa-user" />
                             </NavLink>
                             <NavLink to="/logout" activeclassname="active">
                                 Logout

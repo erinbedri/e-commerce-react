@@ -1,22 +1,15 @@
 (function (global, factory) {
     typeof exports === "object" && typeof module !== "undefined"
-        ? (module.exports = factory(
-              require("http"),
-              require("fs"),
-              require("crypto")
-          ))
+        ? (module.exports = factory(require("http"), require("fs"), require("crypto")))
         : typeof define === "function" && define.amd
         ? define(["http", "fs", "crypto"], factory)
-        : ((global =
-              typeof globalThis !== "undefined" ? globalThis : global || self),
+        : ((global = typeof globalThis !== "undefined" ? globalThis : global || self),
           (global.Server = factory(global.http, global.fs, global.crypto)));
 })(this, function (http, fs, crypto) {
     "use strict";
 
     function _interopDefaultLegacy(e) {
-        return e && typeof e === "object" && "default" in e
-            ? e
-            : { default: e };
+        return e && typeof e === "object" && "default" in e ? e : { default: e };
     }
 
     var http__default = /*#__PURE__*/ _interopDefaultLegacy(http);
@@ -105,8 +98,7 @@
             // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
             if (method == "OPTIONS") {
                 Object.assign(headers, {
-                    "Access-Control-Allow-Methods":
-                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                     "Access-Control-Allow-Credentials": false,
                     "Access-Control-Max-Age": "86400",
                     "Access-Control-Allow-Headers":
@@ -119,10 +111,7 @@
                 } catch (err) {
                     if (err instanceof ServiceError$1) {
                         status = err.status || 400;
-                        result = composeErrorObject(
-                            err.code || status,
-                            err.message
-                        );
+                        result = composeErrorObject(err.code || status, err.message);
                     } else {
                         // Unhandled exception, this is due to an error in the service code - REST consumers should never have to encounter this;
                         // If it happens, it must be debugged in a future version of the server
@@ -134,14 +123,8 @@
             }
 
             res.writeHead(status, headers);
-            if (
-                context != undefined &&
-                context.util != undefined &&
-                context.util.throttle
-            ) {
-                await new Promise((r) =>
-                    setTimeout(r, 500 + Math.random() * 500)
-                );
+            if (context != undefined && context.util != undefined && context.util.throttle) {
+                await new Promise((r) => setTimeout(r, 500 + Math.random() * 500));
             }
             res.end(result);
 
@@ -152,33 +135,18 @@
             }
 
             async function handle(context) {
-                const { serviceName, tokens, query, body } = await parseRequest(
-                    req
-                );
+                const { serviceName, tokens, query, body } = await parseRequest(req);
                 if (serviceName == "admin") {
-                    return ({ headers, result } = services["admin"](
-                        method,
-                        tokens,
-                        query,
-                        body
-                    ));
+                    return ({ headers, result } = services["admin"](method, tokens, query, body));
                 } else if (serviceName == "favicon.ico") {
-                    return ({ headers, result } = services["favicon"](
-                        method,
-                        tokens,
-                        query,
-                        body
-                    ));
+                    return ({ headers, result } = services["favicon"](method, tokens, query, body));
                 }
 
                 const service = services[serviceName];
 
                 if (service === undefined) {
                     status = 400;
-                    result = composeErrorObject(
-                        400,
-                        `Service "${serviceName}" is not supported`
-                    );
+                    result = composeErrorObject(400, `Service "${serviceName}" is not supported`);
                     console.error("Missing service " + serviceName);
                 } else {
                     result = await service(context, {
@@ -217,10 +185,7 @@
             .split("&")
             .filter((s) => s != "")
             .map((x) => x.split("="))
-            .reduce(
-                (p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v) }),
-                {}
-            );
+            .reduce((p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v) }), {});
         const body = await parseBody(req);
 
         return {
@@ -260,16 +225,8 @@
          */
         async parseRequest(context, request) {
             for (let { method, name, handler } of this._actions) {
-                if (
-                    method === request.method &&
-                    matchAndAssignParams(context, request.tokens[0], name)
-                ) {
-                    return await handler(
-                        context,
-                        request.tokens.slice(1),
-                        request.query,
-                        request.body
-                    );
+                if (method === request.method && matchAndAssignParams(context, request.tokens[0], name)) {
+                    return await handler(context, request.tokens.slice(1), request.query, request.body);
                 }
             }
         }
@@ -346,14 +303,11 @@
     var Service_1 = Service;
 
     function uuid() {
-        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-            /[xy]/g,
-            function (c) {
-                let r = (Math.random() * 16) | 0,
-                    v = c == "x" ? r : (r & 0x3) | 0x8;
-                return v.toString(16);
-            }
-        );
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+            let r = (Math.random() * 16) | 0,
+                v = c == "x" ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
     }
 
     var util = {
@@ -364,9 +318,7 @@
 
     const data = fs__default["default"].existsSync("./data")
         ? fs__default["default"].readdirSync("./data").reduce((p, c) => {
-              const content = JSON.parse(
-                  fs__default["default"].readFileSync("./data/" + c)
-              );
+              const content = JSON.parse(fs__default["default"].readFileSync("./data/" + c));
               const collection = c.slice(0, -5);
               p[collection] = {};
               for (let endpoint in content) {
@@ -414,10 +366,7 @@
                     responseData = responseData[token];
                 }
             }
-            if (
-                responseData !== undefined &&
-                responseData[tokens.slice(-1)] !== undefined
-            ) {
+            if (responseData !== undefined && responseData[tokens.slice(-1)] !== undefined) {
                 responseData[tokens.slice(-1)] = body;
             }
             return responseData[tokens.slice(-1)];
@@ -503,8 +452,7 @@
 
     var users = userService.parseRequest;
 
-    const { NotFoundError: NotFoundError$1, RequestError: RequestError$1 } =
-        errors;
+    const { NotFoundError: NotFoundError$1, RequestError: RequestError$1 } = errors;
 
     var crud = {
         get,
@@ -527,26 +475,15 @@
 
     function parseWhere(query) {
         const operators = {
-            "<=": (prop, value) => (record) =>
-                record[prop] <= JSON.parse(value),
+            "<=": (prop, value) => (record) => record[prop] <= JSON.parse(value),
             "<": (prop, value) => (record) => record[prop] < JSON.parse(value),
-            ">=": (prop, value) => (record) =>
-                record[prop] >= JSON.parse(value),
+            ">=": (prop, value) => (record) => record[prop] >= JSON.parse(value),
             ">": (prop, value) => (record) => record[prop] > JSON.parse(value),
             "=": (prop, value) => (record) => record[prop] == JSON.parse(value),
-            " like ": (prop, value) => (record) =>
-                record[prop]
-                    .toLowerCase()
-                    .includes(JSON.parse(value).toLowerCase()),
-            " in ": (prop, value) => (record) =>
-                JSON.parse(`[${/\((.+?)\)/.exec(value)[1]}]`).includes(
-                    record[prop]
-                ),
+            " like ": (prop, value) => (record) => record[prop].toLowerCase().includes(JSON.parse(value).toLowerCase()),
+            " in ": (prop, value) => (record) => JSON.parse(`[${/\((.+?)\)/.exec(value)[1]}]`).includes(record[prop]),
         };
-        const pattern = new RegExp(
-            `^(.+?)(${Object.keys(operators).join("|")})(.+?)$`,
-            "i"
-        );
+        const pattern = new RegExp(`^(.+?)(${Object.keys(operators).join("|")})(.+?)$`, "i");
 
         try {
             let clauses = [query.trim()];
@@ -585,14 +522,9 @@
 
         try {
             if (query.where) {
-                responseData = context.storage
-                    .get(context.params.collection)
-                    .filter(parseWhere(query.where));
+                responseData = context.storage.get(context.params.collection).filter(parseWhere(query.where));
             } else if (context.params.collection) {
-                responseData = context.storage.get(
-                    context.params.collection,
-                    tokens[0]
-                );
+                responseData = context.storage.get(context.params.collection, tokens[0]);
             } else {
                 // Get list of collections
                 return context.storage.get();
@@ -611,20 +543,13 @@
                 // Sorting priority is from first to last, therefore we sort from last to first
                 for (let i = props.length - 1; i >= 0; i--) {
                     let { prop, desc } = props[i];
-                    responseData.sort(
-                        ({ [prop]: propA }, { [prop]: propB }) => {
-                            if (
-                                typeof propA == "number" &&
-                                typeof propB == "number"
-                            ) {
-                                return (propA - propB) * (desc ? -1 : 1);
-                            } else {
-                                return (
-                                    propA.localeCompare(propB) * (desc ? -1 : 1)
-                                );
-                            }
+                    responseData.sort(({ [prop]: propA }, { [prop]: propB }) => {
+                        if (typeof propA == "number" && typeof propB == "number") {
+                            return (propA - propB) * (desc ? -1 : 1);
+                        } else {
+                            return propA.localeCompare(propB) * (desc ? -1 : 1);
                         }
-                    );
+                    });
                 }
             }
 
@@ -655,9 +580,7 @@
 
             if (query.select) {
                 const props = query.select.split(",").filter((p) => p != "");
-                responseData = Array.isArray(responseData)
-                    ? responseData.map(transform)
-                    : transform(responseData);
+                responseData = Array.isArray(responseData) ? responseData.map(transform) : transform(responseData);
 
                 function transform(r) {
                     const result = {};
@@ -674,13 +597,8 @@
                     console.log(
                         `Loading related records from "${collection}" into "${propName}", joined on "_id"="${idSource}"`
                     );
-                    const storageSource =
-                        collection == "users"
-                            ? context.protectedStorage
-                            : context.storage;
-                    responseData = Array.isArray(responseData)
-                        ? responseData.map(transform)
-                        : transform(responseData);
+                    const storageSource = collection == "users" ? context.protectedStorage : context.storage;
+                    responseData = Array.isArray(responseData) ? responseData.map(transform) : transform(responseData);
 
                     function transform(r) {
                         const seekId = r[idSource];
@@ -738,10 +656,7 @@
         let existing;
 
         try {
-            existing = context.storage.get(
-                context.params.collection,
-                tokens[0]
-            );
+            existing = context.storage.get(context.params.collection, tokens[0]);
         } catch (err) {
             throw new NotFoundError$1();
         }
@@ -749,11 +664,7 @@
         context.canAccess(existing, body);
 
         try {
-            responseData = context.storage.set(
-                context.params.collection,
-                tokens[0],
-                body
-            );
+            responseData = context.storage.set(context.params.collection, tokens[0], body);
         } catch (err) {
             throw new RequestError$1();
         }
@@ -773,10 +684,7 @@
         let existing;
 
         try {
-            existing = context.storage.get(
-                context.params.collection,
-                tokens[0]
-            );
+            existing = context.storage.get(context.params.collection, tokens[0]);
         } catch (err) {
             throw new NotFoundError$1();
         }
@@ -784,11 +692,7 @@
         context.canAccess(existing, body);
 
         try {
-            responseData = context.storage.merge(
-                context.params.collection,
-                tokens[0],
-                body
-            );
+            responseData = context.storage.merge(context.params.collection, tokens[0], body);
         } catch (err) {
             throw new RequestError$1();
         }
@@ -806,10 +710,7 @@
         let existing;
 
         try {
-            existing = context.storage.get(
-                context.params.collection,
-                tokens[0]
-            );
+            existing = context.storage.get(context.params.collection, tokens[0]);
         } catch (err) {
             throw new NotFoundError$1();
         }
@@ -817,10 +718,7 @@
         context.canAccess(existing);
 
         try {
-            responseData = context.storage.delete(
-                context.params.collection,
-                tokens[0]
-            );
+            responseData = context.storage.delete(context.params.collection, tokens[0]);
         } catch (err) {
             throw new RequestError$1();
         }
@@ -865,13 +763,7 @@
     const mode = process.argv[2] == "-dev" ? "dev" : "prod";
 
     const files = {
-        index:
-            mode == "prod"
-                ? require$$0
-                : fs__default["default"].readFileSync(
-                      "./client/index.html",
-                      "utf-8"
-                  ),
+        index: mode == "prod" ? require$$0 : fs__default["default"].readFileSync("./client/index.html", "utf-8"),
     };
 
     var admin = (method, tokens, query, body) => {
@@ -884,12 +776,7 @@
         if (resource && resource.split(".").pop() == "js") {
             headers["Content-Type"] = "application/javascript";
 
-            files[resource] =
-                files[resource] ||
-                fs__default["default"].readFileSync(
-                    "./client/" + resource,
-                    "utf-8"
-                );
+            files[resource] = files[resource] || fs__default["default"].readFileSync("./client/" + resource, "utf-8");
             result = files[resource];
         } else {
             result = files.index;
@@ -958,10 +845,7 @@
                 const collection = new Map();
                 for (let recordId in seedData[collectionName]) {
                     if (seedData.hasOwnProperty(collectionName)) {
-                        collection.set(
-                            recordId,
-                            seedData[collectionName][recordId]
-                        );
+                        collection.set(recordId, seedData[collectionName][recordId]);
                     }
                 }
                 collections.set(collectionName, collection);
@@ -981,9 +865,7 @@
                 return [...collections.keys()];
             }
             if (!collections.has(collection)) {
-                throw new ReferenceError(
-                    "Collection does not exist: " + collection
-                );
+                throw new ReferenceError("Collection does not exist: " + collection);
             }
             const targetCollection = collections.get(collection);
             if (!id) {
@@ -1034,9 +916,7 @@
          */
         function set(collection, id, data) {
             if (!collections.has(collection)) {
-                throw new ReferenceError(
-                    "Collection does not exist: " + collection
-                );
+                throw new ReferenceError("Collection does not exist: " + collection);
             }
             const targetCollection = collections.get(collection);
             if (!targetCollection.has(id)) {
@@ -1059,9 +939,7 @@
          */
         function merge(collection, id, data) {
             if (!collections.has(collection)) {
-                throw new ReferenceError(
-                    "Collection does not exist: " + collection
-                );
+                throw new ReferenceError("Collection does not exist: " + collection);
             }
             const targetCollection = collections.get(collection);
             if (!targetCollection.has(id)) {
@@ -1083,9 +961,7 @@
          */
         function del(collection, id) {
             if (!collections.has(collection)) {
-                throw new ReferenceError(
-                    "Collection does not exist: " + collection
-                );
+                throw new ReferenceError("Collection does not exist: " + collection);
             }
             const targetCollection = collections.get(collection);
             if (!targetCollection.has(id)) {
@@ -1104,9 +980,7 @@
          */
         function query(collection, query) {
             if (!collections.has(collection)) {
-                throw new ReferenceError(
-                    "Collection does not exist: " + collection
-                );
+                throw new ReferenceError("Collection does not exist: " + collection);
             }
             const targetCollection = collections.get(collection);
             const result = [];
@@ -1117,14 +991,8 @@
                     if (query.hasOwnProperty(prop)) {
                         const targetValue = query[prop];
                         // Perform lowercase search, if value is string
-                        if (
-                            typeof targetValue === "string" &&
-                            typeof entry[prop] === "string"
-                        ) {
-                            if (
-                                targetValue.toLocaleLowerCase() !==
-                                entry[prop].toLocaleLowerCase()
-                            ) {
+                        if (typeof targetValue === "string" && typeof entry[prop] === "string") {
+                            if (targetValue.toLocaleLowerCase() !== entry[prop].toLocaleLowerCase()) {
                                 match = false;
                                 break;
                             }
@@ -1178,10 +1046,7 @@
         if (Array.isArray(value)) {
             return value.map(deepCopy);
         } else if (typeof value == "object") {
-            return [...Object.entries(value)].reduce(
-                (p, [k, v]) => Object.assign(p, { [k]: deepCopy(v) }),
-                {}
-            );
+            return [...Object.entries(value)].reduce((p, [k, v]) => Object.assign(p, { [k]: deepCopy(v) }), {});
         } else {
             return value;
         }
@@ -1189,11 +1054,7 @@
 
     var storage = initPlugin;
 
-    const {
-        ConflictError: ConflictError$1,
-        CredentialError: CredentialError$1,
-        RequestError: RequestError$2,
-    } = errors;
+    const { ConflictError: ConflictError$1, CredentialError: CredentialError$1, RequestError: RequestError$2 } = errors;
 
     function initPlugin$1(settings) {
         const identity = settings.identity;
@@ -1210,10 +1071,7 @@
                 let user;
                 const session = findSessionByToken(userToken);
                 if (session !== undefined) {
-                    const userData = context.protectedStorage.get(
-                        "users",
-                        session.userId
-                    );
+                    const userData = context.protectedStorage.get("users", session.userId);
                     if (userData !== undefined) {
                         console.log("Authorized as " + userData[identity]);
                         user = userData;
@@ -1239,18 +1097,13 @@
                         [identity]: body[identity],
                     }).length !== 0
                 ) {
-                    throw new ConflictError$1(
-                        `A user with the same ${identity} already exists`
-                    );
+                    throw new ConflictError$1(`A user with the same ${identity} already exists`);
                 } else {
                     const newUser = Object.assign({}, body, {
                         [identity]: body[identity],
                         hashedPassword: hash(body.password),
                     });
-                    const result = context.protectedStorage.add(
-                        "users",
-                        newUser
-                    );
+                    const result = context.protectedStorage.add("users", newUser);
                     delete result.hashedPassword;
 
                     const session = saveSession(result._id);
@@ -1274,14 +1127,10 @@
 
                         return result;
                     } else {
-                        throw new CredentialError$1(
-                            "Login or password don't match"
-                        );
+                        throw new CredentialError$1("Login or password don't match");
                     }
                 } else {
-                    throw new CredentialError$1(
-                        "Login or password don't match"
-                    );
+                    throw new CredentialError$1("Login or password don't match");
                 }
             }
 
@@ -1289,10 +1138,7 @@
                 if (context.user !== undefined) {
                     const session = findSessionByUserId(context.user._id);
                     if (session !== undefined) {
-                        context.protectedStorage.delete(
-                            "sessions",
-                            session._id
-                        );
+                        context.protectedStorage.delete("sessions", session._id);
                     }
                 } else {
                     throw new CredentialError$1("User session does not exist");
@@ -1397,11 +1243,7 @@
             function canAccess(data, newData) {
                 const user = context.user;
                 const action = actions[request.method];
-                let { rule, propRules } = getRule(
-                    action,
-                    context.params.collection,
-                    data
-                );
+                let { rule, propRules } = getRule(action, context.params.collection, data);
 
                 if (Array.isArray(rule)) {
                     rule = checkRoles(rule, data);
@@ -1411,9 +1253,7 @@
                 if (!rule && !isAdmin) {
                     throw new CredentialError$2();
                 }
-                propRules.map((r) =>
-                    applyPropRule(action, r, user, data, newData)
-                );
+                propRules.map((r) => applyPropRule(action, r, user, data, newData));
             }
 
             function applyPropRule(action, [prop, rule], user, data, newData) {
@@ -1454,31 +1294,19 @@
             const collectionRules = rules[collection];
             if (collectionRules !== undefined) {
                 // Top-level rule for the specific action for the collection
-                currentRule = ruleOrDefault(
-                    currentRule,
-                    collectionRules[action]
-                );
+                currentRule = ruleOrDefault(currentRule, collectionRules[action]);
 
                 // Prop rules
                 const allPropRules = collectionRules["*"];
                 if (allPropRules !== undefined) {
-                    propRules = ruleOrDefault(
-                        propRules,
-                        getPropRule(allPropRules, action)
-                    );
+                    propRules = ruleOrDefault(propRules, getPropRule(allPropRules, action));
                 }
 
                 // Rules by record id
                 const recordRules = collectionRules[data._id];
                 if (recordRules !== undefined) {
-                    currentRule = ruleOrDefault(
-                        currentRule,
-                        recordRules[action]
-                    );
-                    propRules = ruleOrDefault(
-                        propRules,
-                        getPropRule(recordRules, action)
-                    );
+                    currentRule = ruleOrDefault(currentRule, recordRules[action]);
+                    propRules = ruleOrDefault(propRules, getPropRule(recordRules, action));
                 }
             }
 
@@ -1512,16 +1340,14 @@
                 fname: "Peter",
                 lname: "Petrov",
                 telNumber: "00359123654",
-                hashedPassword:
-                    "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
                 email: "john@abv.bg",
                 fname: "John",
                 lname: "Atanasof",
                 telNumber: "00359123654",
-                hashedPassword:
-                    "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
             },
         },
         sessions: {},
@@ -1594,8 +1420,7 @@
                 fname: "Petar",
                 lname: "Petrov",
                 telNumber: "00359124314213",
-                imageUrl:
-                    "https://www.rivervaleleasing.co.uk/webp/blog/jaguar-i-pace-front-angle-840-0.jpg",
+                imageUrl: "https://www.rivervaleleasing.co.uk/webp/blog/jaguar-i-pace-front-angle-840-0.jpg",
                 description:
                     "The Jaguar I-PACE is a luxury electric SUV that offers sleek design, advanced technology, and long-range capabilities. With its powerful electric motors, spacious interior, and cutting-edge safety features, the I-PACE is the perfect choice for those who want a premium electric vehicle with the latest technology.",
                 _createdOn: 1617194128620,
@@ -1655,7 +1480,18 @@
                 _createdOn: 1617194128618,
             },
         },
-        comments: {},
+        likes: {
+            "2d9a9e4e-848d-4fc7-89dc-1c6b8a43a085": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                likedCar: "1d9a9e4e-848d-4fc7-89dc-1c6b8a43a085",
+                _createdOn: 1617194128618,
+            },
+            "4d9a9e4e-848d-4fc7-89dc-1c6b8a43a083": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                likedCar: "7f1e8g4d-2d6g-5bc8-b9f9-6g7d8e3fdf1f",
+                _createdOn: 1617194128618,
+            },
+        },
     };
     var rules$1 = {
         users: {
@@ -1672,22 +1508,13 @@
         rules: rules$1,
     };
 
-    const plugins = [
-        storage(settings),
-        auth(settings),
-        util$2(),
-        rules(settings),
-    ];
+    const plugins = [storage(settings), auth(settings), util$2(), rules(settings)];
 
-    const server = http__default["default"].createServer(
-        requestHandler(plugins, services)
-    );
+    const server = http__default["default"].createServer(requestHandler(plugins, services));
 
     const port = 3030;
     server.listen(port);
-    console.log(
-        `Server started on port ${port}. You can make requests to http://localhost:${port}/`
-    );
+    console.log(`Server started on port ${port}. You can make requests to http://localhost:${port}/`);
     console.log(`Admin panel located at http://localhost:${port}/admin`);
 
     var softuniPracticeServer = {};

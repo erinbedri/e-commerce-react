@@ -14,7 +14,9 @@ export default function CarDetails() {
     const { user } = useContext(AuthContext);
 
     const [currentCar, setCurrentCar] = useState({});
-    const [isLiked, setIsLiked] = useState(false);
+    const [isLiked, setIsLiked] = useState();
+    const [likeId, setLikeId] = useState();
+
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -33,13 +35,38 @@ export default function CarDetails() {
             });
     }, []);
 
+    useEffect(() => {
+        carService.getAllLikes(user._id).then((res) => {
+            const like = res.find((like) => like._ownerId === user._id && currentCar._id === like.likedCar);
+            if (like) {
+                setIsLiked(true);
+                setLikeId(like._id);
+            } else {
+                setIsLiked(false);
+            }
+        });
+    }, [isLiked]);
+
+    const likeHandler = () => {
+        if (isLiked) {
+            carService.deleteLike(likeId);
+            setIsLiked(false);
+        } else {
+            const likeData = {
+                _ownerId: user._id,
+                likedCar: currentCar._id,
+            };
+            carService.addLike(likeData).then((res) => {
+                if (res._id) {
+                    setIsLiked(true);
+                }
+            });
+        }
+    };
+
     if (isLoading) {
         return <div id="loader"></div>;
     }
-
-    const likeHandler = () => {
-        setIsLiked(!isLiked);
-    };
 
     return (
         <section id="details" className="container">
@@ -121,9 +148,13 @@ export default function CarDetails() {
                 </div>
                 <div className="details-img">
                     <img src={currentCar.imageUrl} alt="car" />
-                    <div className="likeBtn">
-                        <i onClick={likeHandler} className={`fa-solid fa-star ${isLiked ? "liked" : "notLiked"}`} />
-                    </div>
+                    {user.accessToken ? (
+                        <div className="likeBtn">
+                            <i onClick={likeHandler} className={`fa-solid fa-star ${isLiked ? "liked" : "notLiked"}`} />
+                        </div>
+                    ) : (
+                        ""
+                    )}
                 </div>
             </div>
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function UserTestimonial({ name, img, testimonial }) {
-    console.log(name);
     return (
         <div className="testimonials-item">
             <p>{testimonial}</p>

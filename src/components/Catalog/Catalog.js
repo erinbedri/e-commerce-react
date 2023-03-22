@@ -120,7 +120,7 @@ export default function Catalog() {
             <section id="catalog" className="container">
                 <div className="catalog-list">
                     <div className="catalog-header">
-                        <span />
+                        <span></span>
                         <span onClick={sortByHandler}>
                             <i className="fa-solid fa-sort" /> Manufacturer
                         </span>

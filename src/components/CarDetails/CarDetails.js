@@ -14,6 +14,7 @@ export default function CarDetails() {
     const { user } = useContext(AuthContext);
 
     const [currentCar, setCurrentCar] = useState({});
+    const [isLiked, setIsLiked] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -36,6 +37,11 @@ export default function CarDetails() {
         return <div id="loader"></div>;
     }
 
+    const likeHandler = () => {
+        setIsLiked(!isLiked);
+    };
+
+    console.log("liked: ", isLiked);
     return (
         <section id="details" className="container">
             <h2 className="title">
@@ -116,6 +122,9 @@ export default function CarDetails() {
                 </div>
                 <div className="details-img">
                     <img src={currentCar.imageUrl} alt="car" />
+                    <div className="likeBtn">
+                        <i onClick={likeHandler} className={`fa-solid fa-star ${isLiked ? "liked" : "notLiked"}`} />
+                    </div>
                 </div>
             </div>
 

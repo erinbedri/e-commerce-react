@@ -29,3 +29,34 @@
     gap: 0.5rem;
     margin: 2rem 0 0 0;
 }
+
+.details-img {
+    position: relative;
+}
+
+.likeBtn {
+    position: absolute;
+    top: 0;
+}
+
+.likeBtn i {
+    font-size: 2rem;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.liked {
+    color: yellow;
+}
+
+.liked:hover {
+    color: yellow;
+}
+
+.notLiked {
+    color: white;
+}
+
+.notLiked:hover {
+    color: white;
+}

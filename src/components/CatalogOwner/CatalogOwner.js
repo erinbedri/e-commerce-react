@@ -27,26 +27,40 @@ export default function CatalogOwner() {
         return <div id="loader"></div>;
     }
 
+    console.log(myCars);
+
     return (
         <section id="catalog" className="container">
-            <div className="catalog-list">
-                <div className="catalog-header">
-                    <span />
-                    <span>Manufacturer</span>
-                    <span>Model</span>
-                    <span>Category</span>
-                    <span>Mileage</span>
-                    <span>Year</span>
-                    <span>Price</span>
-                    <span>Location</span>
-                </div>
+            {myCars.length > 1 ? (
+                <div className="catalog-list">
+                    <div className="catalog-header">
+                        <span />
+                        <span>Manufacturer</span>
+                        <span>Model</span>
+                        <span>Category</span>
+                        <span>Mileage</span>
+                        <span>Year</span>
+                        <span>Price</span>
+                        <span>Location</span>
+                    </div>
 
-                {myCars.map((c) => (
-                    <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
-                        <CarItem car={c} />
-                    </Link>
-                ))}
-            </div>
+                    {myCars.map((c) => (
+                        <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
+                            <CarItem car={c} />
+                        </Link>
+                    ))}
+                </div>
+            ) : (
+                <>
+                    <h3 style={{ textAlign: "center", marginTop: "2rem" }}>You have no cars in your collection!</h3>
+                    <p style={{ textAlign: "center", marginTop: "1rem" }}>
+                        <Link to={"/catalog/car/add"}>
+                            <b>Sell cars</b>
+                        </Link>{" "}
+                        now.
+                    </p>
+                </>
+            )}
         </section>
     );
 }

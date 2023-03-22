@@ -35,6 +35,9 @@ export default function Header() {
                             <NavLink to="/catalog/owner" activeclassname="active">
                                 My Cars
                             </NavLink>
+                            <NavLink to="/catalog/owner" activeclassname="active">
+                                Favourites
+                            </NavLink>
                             <NavLink to="/profile" activeclassname="active">
                                 <i className="fa-solid fa-user" />
                             </NavLink>

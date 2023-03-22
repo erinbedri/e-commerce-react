@@ -43,7 +43,7 @@ export default function Header() {
                                     <span className="tooltiptext">My Cars</span>
                                 </div>
                             </NavLink>
-                            <NavLink to="/favourites" activeclassname="active">
+                            <NavLink to="/catalog/favourites" activeclassname="active">
                                 <div className="tooltip">
                                     <i
                                         className="fa-solid fa-star"

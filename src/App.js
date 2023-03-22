@@ -18,6 +18,7 @@ import Logout from "./components/Logout/Logout";
 import Footer from "./components/Footer/Footer";
 import CarOwner from "./common/CarOwner";
 import Profile from "./components/Profile/Profile";
+import Favourites from "./components/Favourites/Favourites";
 import AuthenticatedUser from "./common/AuthenticatedUser";
 import NotFound from "./components/common/NotFound/NotFound";
 
@@ -44,6 +45,10 @@ function App() {
 
                         <Route element={<AuthenticatedUser />}>
                             <Route path="/catalog/owner" element={<CatalogOwner />} />
+                        </Route>
+
+                        <Route element={<AuthenticatedUser />}>
+                            <Route path="/catalog/favourites" element={<Favourites />} />
                         </Route>
 
                         <Route path="/catalog/:carId/details" element={<CarDetails />} />

@@ -118,7 +118,7 @@ export default function Catalog() {
             </form>
 
             <section id="catalog" className="container">
-                {cars.length > 1 ? (
+                {cars.length > 0 ? (
                     <div className="catalog-list">
                         <div className="catalog-header">
                             <span></span>
@@ -147,7 +147,7 @@ export default function Catalog() {
 
                         {cars.map((c) => (
                             <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
-                                <CarItem car={c} />
+                                <CarItem {...c} />
                             </Link>
                         ))}
                     </div>

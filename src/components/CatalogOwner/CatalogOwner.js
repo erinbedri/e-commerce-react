@@ -27,11 +27,9 @@ export default function CatalogOwner() {
         return <div id="loader"></div>;
     }
 
-    console.log(myCars);
-
     return (
         <section id="catalog" className="container">
-            {myCars.length > 1 ? (
+            {myCars.length > 0 ? (
                 <div className="catalog-list">
                     <div className="catalog-header">
                         <span />
@@ -46,7 +44,7 @@ export default function CatalogOwner() {
 
                     {myCars.map((c) => (
                         <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
-                            <CarItem car={c} />
+                            <CarItem {...c} />
                         </Link>
                     ))}
                 </div>

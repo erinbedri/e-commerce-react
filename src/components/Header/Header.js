@@ -33,16 +33,28 @@ export default function Header() {
                                 Sell Car
                             </NavLink>
                             <NavLink to="/catalog/owner" activeclassname="active">
-                                My Cars
+                                <div className="tooltip">
+                                    <i className="fa-solid fa-square-parking" />
+                                    <span class="tooltiptext">My Cars</span>
+                                </div>
                             </NavLink>
-                            <NavLink to="/catalog/owner" activeclassname="active">
-                                Favourites
+                            <NavLink to="/favourites" activeclassname="active">
+                                <div className="tooltip">
+                                    <i className="fa-solid fa-star" />
+                                    <span class="tooltiptext">Favourites</span>
+                                </div>
                             </NavLink>
                             <NavLink to="/profile" activeclassname="active">
-                                <i className="fa-solid fa-user" />
+                                <div className="tooltip">
+                                    <i className="fa-solid fa-user" />
+                                    <span class="tooltiptext">Profile</span>
+                                </div>
                             </NavLink>
                             <NavLink to="/logout" activeclassname="active">
-                                Logout
+                                <div className="tooltip">
+                                    <i className="fa-solid fa-right-from-bracket" />
+                                    <span class="tooltiptext">Logout</span>
+                                </div>
                             </NavLink>
                         </>
                     ) : (

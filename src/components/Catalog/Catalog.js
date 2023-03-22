@@ -7,6 +7,7 @@ import CarItem from "../CarItem/CarItem";
 
 export default function Catalog() {
     const [cars, setCars] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const [pageSize, setPageSize] = useState(5);
     const [collectionSize, setCollectionSize] = useState(0);
@@ -26,6 +27,7 @@ export default function Catalog() {
             .getAll(searchParam, sortBy, orderBy, offset, pageSize)
             .then((res) => {
                 setCars(res);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -95,6 +97,10 @@ export default function Catalog() {
     const searchHandler = (e) => {
         setSearchParam(e.target.value.toLowerCase());
     };
+
+    if (isLoading) {
+        return <div id="loader"></div>;
+    }
 
     return (
         <>

@@ -9,19 +9,23 @@ export default function CatalogOwner() {
     const { user } = useContext(AuthContext);
 
     const [myCars, setMyCars] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         carService
             .getAllMyCars()
             .then((res) => {
                 setMyCars(res.filter((c) => c._ownerId === user._id));
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);
             });
     }, []);
 
-    console.log(myCars);
+    if (isLoading) {
+        return <div id="loader"></div>;
+    }
 
     return (
         <section id="catalog" className="container">

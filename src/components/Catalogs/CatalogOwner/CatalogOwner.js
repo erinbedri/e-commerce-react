@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import * as carService from "../../../services/carService";
 import { AuthContext } from "../../../contexts/AuthContext";
-import CarItem from "../../CarItem/CarItem";
+import CarItem from "../../Cars/CarItem/CarItem";
 import useLoading from "../../../hooks/useLoading";
 
 export default function CatalogOwner() {

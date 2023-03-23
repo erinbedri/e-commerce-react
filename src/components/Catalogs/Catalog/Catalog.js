@@ -7,16 +7,14 @@ import CarItem from "../../Cars/CarItem/CarItem";
 import useLoading from "../../../hooks/useLoading";
 
 export default function Catalog() {
-    const [cars, setCars] = useState([]);
-
     const { isLoading, loading } = useLoading(true);
+    const [cars, setCars] = useState([]);
 
     const [pageSize, setPageSize] = useState(5);
     const [collectionSize, setCollectionSize] = useState(0);
     const totalPages = Math.ceil(collectionSize / pageSize);
     const [currentPage, setCurrentPage] = useState(1);
     const [offset, setOffset] = useState(0);
-
     const [showPreviousPageController, setShowPreviousPageController] = useState(false);
     const [showNextPageController, setShowNextPageController] = useState(true);
 
@@ -63,40 +61,40 @@ export default function Catalog() {
         }
     }, [currentPage]);
 
-    const previousPageHandler = () => {
+    const handlePreviousPage = () => {
         if (currentPage > 1) {
             setCurrentPage((oldPage) => oldPage - 1);
             setOffset((oldOffset) => oldOffset - pageSize);
         }
     };
 
-    const firstPageHandler = () => {
+    const handleFirstPage = () => {
         setCurrentPage(1);
         setOffset(0);
     };
 
-    const nextPageHandler = () => {
+    const handleNextPage = () => {
         if (totalPages > currentPage) {
             setCurrentPage((oldPage) => oldPage + 1);
             setOffset((oldOffset) => oldOffset + pageSize);
         }
     };
 
-    const lastPageHandler = () => {
+    const handleLastPage = () => {
         setCurrentPage(totalPages);
         setOffset((totalPages - 1) * pageSize);
     };
 
-    const selectHandler = (e) => {
+    const handlePageSelector = (e) => {
         setPageSize(e.target.value);
     };
 
-    const sortByHandler = (e) => {
+    const handleSortBy = (e) => {
         setSortBy(e.target.innerText.toLowerCase() || e.target.parentElement.innerText.toLowerCase());
         setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
     };
 
-    const searchHandler = (e) => {
+    const handleSearch = (e) => {
         setSearchParam(e.target.value.toLowerCase());
     };
 
@@ -113,7 +111,7 @@ export default function Catalog() {
                         name="search"
                         className="search-input"
                         placeholder="Search..."
-                        onChange={searchHandler}
+                        onChange={handleSearch}
                     />
                     <button type="submit" disabled style={{ display: "none" }} aria-hidden="true"></button>
                 </div>
@@ -124,25 +122,25 @@ export default function Catalog() {
                     <div className="catalog-list">
                         <div className="catalog-header">
                             <span></span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Manufacturer
                             </span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Model
                             </span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Category
                             </span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Mileage
                             </span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Year
                             </span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Price
                             </span>
-                            <span onClick={sortByHandler}>
+                            <span onClick={handleSortBy}>
                                 <i className="fa-solid fa-sort" /> Location
                             </span>
                         </div>
@@ -168,24 +166,24 @@ export default function Catalog() {
                 )}
 
                 <div className="pagination-controls">
-                    {showPreviousPageController && <i onClick={firstPageHandler} className="fa-solid fa-angles-left" />}
+                    {showPreviousPageController && <i onClick={handleFirstPage} className="fa-solid fa-angles-left" />}
                     {showPreviousPageController && (
-                        <i onClick={previousPageHandler} className="fa-solid fa-chevron-left" />
+                        <i onClick={handlePreviousPage} className="fa-solid fa-chevron-left" />
                     )}
 
                     <h3>
                         Page {currentPage} of {totalPages}
                     </h3>
 
-                    {showNextPageController && <i onClick={nextPageHandler} className="fa-solid fa-chevron-right" />}
-                    {showNextPageController && <i onClick={lastPageHandler} className="fa-solid fa-angles-right" />}
+                    {showNextPageController && <i onClick={handleNextPage} className="fa-solid fa-chevron-right" />}
+                    {showNextPageController && <i onClick={handleLastPage} className="fa-solid fa-angles-right" />}
 
                     {currentPage == 1 && (
                         <select
                             name="pageSizeSelector"
                             id="pageSizeSelector"
                             className="pageSizeSelector"
-                            onChange={selectHandler}
+                            onChange={handlePageSelector}
                             defaultValue={pageSize}
                         >
                             <option value="5">5</option>

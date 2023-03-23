@@ -14,9 +14,6 @@ export default function LikedItem({ _ownerId, likedCar }) {
         });
     }, []);
 
-    console.log("car:", car);
-    console.log(user);
-
     return (
         <div className="catalog-item" style={owner ? { backgroundColor: "#ffedef" } : null}>
             <img src={car.imageUrl} alt="car" />

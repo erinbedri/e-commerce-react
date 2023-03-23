@@ -50,6 +50,12 @@ export default function Favourites() {
                     <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
                         You have no cars in your favourites list!
                     </h3>
+                    <p style={{ textAlign: "center", marginTop: "1rem" }}>
+                        <Link to={"/catalog"}>
+                            <b>Browse cars</b>
+                        </Link>{" "}
+                        now.
+                    </p>
                 </>
             )}
         </section>

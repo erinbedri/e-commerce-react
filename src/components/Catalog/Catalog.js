@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import "./catalog.css";
 import * as carService from "../../services/carService";
 import CarItem from "../CarItem/CarItem";
+import useLoading from "../../hooks/useLoading";
 
 export default function Catalog() {
     const [cars, setCars] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+
+    const { isLoading, loading } = useLoading(true);
 
     const [pageSize, setPageSize] = useState(5);
     const [collectionSize, setCollectionSize] = useState(0);
@@ -26,8 +28,8 @@ export default function Catalog() {
         carService
             .getAll(searchParam, sortBy, orderBy, offset, pageSize)
             .then((res) => {
+                loading();
                 setCars(res);
-                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);

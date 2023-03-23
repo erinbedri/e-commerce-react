@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 import * as carService from "../../services/carService";
 import { AuthContext } from "../../contexts/AuthContext";
 import CarItem from "../CarItem/CarItem";
+import useLoading from "../../hooks/useLoading";
 
 export default function CatalogOwner() {
+    const { isLoading, loading } = useLoading(true);
     const { user } = useContext(AuthContext);
-
     const [myCars, setMyCars] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         carService
             .getAllMyCars()
             .then((res) => {
+                loading();
                 setMyCars(res.filter((c) => c._ownerId === user._id));
-                setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);

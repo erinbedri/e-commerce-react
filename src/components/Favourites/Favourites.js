@@ -4,26 +4,24 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import LikedItem from "../CarItem/LikedItem";
 import * as carServices from "../../services/carService";
+import useLoading from "../../hooks/useLoading";
 
 export default function Favourites() {
+    const { isLoading, loading } = useLoading(true);
     const { user } = useContext(AuthContext);
 
-    const [isLoading, setIsLoading] = useState(true);
     const [favourites, setFavourites] = useState([]);
 
     useEffect(() => {
         carServices.getAllLikes(user._id).then((res) => {
-            console.log(res);
+            loading();
             setFavourites(res);
-            setIsLoading(!isLoading);
         });
     }, []);
 
     if (isLoading) {
         return <div id="loader"></div>;
     }
-
-    console.log("favourites ", favourites);
 
     return (
         <section id="catalog" className="container">

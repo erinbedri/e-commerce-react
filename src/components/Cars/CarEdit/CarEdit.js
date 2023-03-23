@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import * as carService from "../../services/carService";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import * as carService from "../../../services/carService";
 
 export default function CarEdit() {
     const [error, setError] = useState([]);

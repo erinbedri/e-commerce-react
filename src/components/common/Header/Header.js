@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./header.css";
-import { AuthContext } from "../../contexts/AuthContext";
-import Weather from "../Weather/Weather";
+import { AuthContext } from "../../../contexts/AuthContext";
+import Weather from "../../Weather/Weather";
 
 export default function Header() {
     const { user } = useContext(AuthContext);
@@ -15,7 +15,7 @@ export default function Header() {
             <div className="header-wrapper">
                 <div className="header-logo">
                     <NavLink to="/">
-                        <img src={require("../../images/cars_logo.png")} alt="logo" />
+                        <img src={require("../../../images/cars_logo.png")} alt="logo" />
                     </NavLink>
                 </div>
 

@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 
 import "./car-details.css";
-import * as carService from "../../services/carService";
-import { AuthContext } from "../../contexts/AuthContext";
-import { formatDate } from "../../helpers/formatDate";
+import * as carService from "../../../services/carService";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { formatDate } from "../../../helpers/formatDate";
 
 export default function CarDetails() {
     const params = useParams();

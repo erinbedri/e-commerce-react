@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 import "./delete-car.css";
-import * as carService from "../../services/carService";
+import * as carService from "../../../services/carService";
 
 export default function CarDelete() {
     const [currentCar, setCurrentCar] = useState({});

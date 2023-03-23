@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import "./profile.css";
-import { getUser } from "../../services/userService";
+import { getUser } from "../../../services/userService";
 
 export default function Profile() {
     const [userDetails, setUserDetails] = useState({});

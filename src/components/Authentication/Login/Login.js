@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import "./login.css";
-import * as authService from "../../services/authService";
-import { AuthContext } from "../../contexts/AuthContext";
+import * as authService from "../../../services/authService";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function Login() {
     const { userLogin } = useContext(AuthContext);

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./catalog.css";
-import * as carService from "../../services/carService";
-import CarItem from "../CarItem/CarItem";
-import useLoading from "../../hooks/useLoading";
+import * as carService from "../../../services/carService";
+import CarItem from "../../CarItem/CarItem";
+import useLoading from "../../../hooks/useLoading";
 
 export default function Catalog() {
     const [cars, setCars] = useState([]);

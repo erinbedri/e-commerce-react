@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./car-add.css";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import * as carService from "../../services/carService";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import * as carService from "../../../services/carService";
 
 export default function CarAdd() {
     const currentYear = new Date().getFullYear();

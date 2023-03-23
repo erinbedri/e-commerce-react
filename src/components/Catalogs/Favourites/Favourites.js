@@ -1,26 +1,22 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import * as carService from "../../services/carService";
-import { AuthContext } from "../../contexts/AuthContext";
-import CarItem from "../CarItem/CarItem";
-import useLoading from "../../hooks/useLoading";
+import { AuthContext } from "../../../contexts/AuthContext";
+import LikedItem from "../../CarItem/LikedItem";
+import * as carServices from "../../../services/carService";
+import useLoading from "../../../hooks/useLoading";
 
-export default function CatalogOwner() {
+export default function Favourites() {
     const { isLoading, loading } = useLoading(true);
     const { user } = useContext(AuthContext);
-    const [myCars, setMyCars] = useState([]);
+
+    const [favourites, setFavourites] = useState([]);
 
     useEffect(() => {
-        carService
-            .getAllMyCars()
-            .then((res) => {
-                loading();
-                setMyCars(res.filter((c) => c._ownerId === user._id));
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        carServices.getAllLikes(user._id).then((res) => {
+            loading();
+            setFavourites(res);
+        });
     }, []);
 
     if (isLoading) {
@@ -29,7 +25,7 @@ export default function CatalogOwner() {
 
     return (
         <section id="catalog" className="container">
-            {myCars.length > 0 ? (
+            {favourites.length > 0 ? (
                 <div className="catalog-list">
                     <div className="catalog-header">
                         <span />
@@ -41,19 +37,20 @@ export default function CatalogOwner() {
                         <span>Price</span>
                         <span>Location</span>
                     </div>
-
-                    {myCars.map((c) => (
-                        <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
-                            <CarItem {...c} />
+                    {favourites.map((c) => (
+                        <Link to={`/catalog/${c.likedCar}/details`} key={c._id} className="catalog-link">
+                            <LikedItem {...c} />
                         </Link>
                     ))}
                 </div>
             ) : (
                 <>
-                    <h3 style={{ textAlign: "center", marginTop: "2rem" }}>You have no cars in your collection!</h3>
+                    <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
+                        You have no cars in your favourites list!
+                    </h3>
                     <p style={{ textAlign: "center", marginTop: "1rem" }}>
-                        <Link to={"/catalog/car/add"}>
-                            <b>Sell cars</b>
+                        <Link to={"/catalog"}>
+                            <b>Browse cars</b>
                         </Link>{" "}
                         now.
                     </p>

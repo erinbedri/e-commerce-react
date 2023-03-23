@@ -5,9 +5,11 @@ import "./catalog.css";
 import * as carService from "../../../services/carService";
 import CarItem from "../../Cars/CarItem/CarItem";
 import useLoading from "../../../hooks/useLoading";
+import Error from "../../common/Error/Error";
 
 export default function Catalog() {
     const { isLoading, loading } = useLoading(true);
+    const [isError, setIsError] = useState(false);
     const [cars, setCars] = useState([]);
 
     const [pageSize, setPageSize] = useState(5);
@@ -29,8 +31,8 @@ export default function Catalog() {
                 loading();
                 setCars(res);
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                setIsError(true);
             });
     }, [searchParam, sortBy, orderBy, pageSize, currentPage]);
 
@@ -40,8 +42,8 @@ export default function Catalog() {
             .then((res) => {
                 setCollectionSize(res);
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                setIsError(true);
             });
     }, []);
 
@@ -100,6 +102,10 @@ export default function Catalog() {
 
     if (isLoading) {
         return <div id="loader"></div>;
+    }
+
+    if (isError) {
+        return <Error />;
     }
 
     return (

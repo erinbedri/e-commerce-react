@@ -5,22 +5,33 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import LikedItem from "../../CarItem/LikedItem";
 import * as carServices from "../../../services/carService";
 import useLoading from "../../../hooks/useLoading";
+import Error from "../../common/Error/Error";
 
 export default function Favourites() {
     const { isLoading, loading } = useLoading(true);
-    const { user } = useContext(AuthContext);
+    const [isError, setIsError] = useState(false);
 
+    const { user } = useContext(AuthContext);
     const [favourites, setFavourites] = useState([]);
 
     useEffect(() => {
-        carServices.getAllLikes(user._id).then((res) => {
-            loading();
-            setFavourites(res);
-        });
+        carServices
+            .getAllLikes(user._id)
+            .then((res) => {
+                loading();
+                setFavourites(res);
+            })
+            .catch(() => {
+                setIsError(true);
+            });
     }, []);
 
     if (isLoading) {
         return <div id="loader"></div>;
+    }
+
+    if (isError) {
+        return <Error />;
     }
 
     return (

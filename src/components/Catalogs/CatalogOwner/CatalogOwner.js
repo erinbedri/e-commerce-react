@@ -5,9 +5,12 @@ import * as carService from "../../../services/carService";
 import { AuthContext } from "../../../contexts/AuthContext";
 import CarItem from "../../Cars/CarItem/CarItem";
 import useLoading from "../../../hooks/useLoading";
+import Error from "../../common/Error/Error";
 
 export default function CatalogOwner() {
     const { isLoading, loading } = useLoading(true);
+    const [isError, setIsError] = useState(false);
+
     const { user } = useContext(AuthContext);
     const [myCars, setMyCars] = useState([]);
 
@@ -18,13 +21,17 @@ export default function CatalogOwner() {
                 loading();
                 setMyCars(res.filter((c) => c._ownerId === user._id));
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                setIsError(true);
             });
     }, []);
 
     if (isLoading) {
         return <div id="loader"></div>;
+    }
+
+    if (isError) {
+        return <Error />;
     }
 
     return (

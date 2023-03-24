@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-import LikedItem from "../../CarItem/LikedItem";
+import LikedItem from "../../Cars/CarItem/LikedItem";
 import * as carServices from "../../../services/carService";
 import useLoading from "../../../hooks/useLoading";
 import Error from "../../common/Error/Error";

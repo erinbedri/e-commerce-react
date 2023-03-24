@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import * as carServices from "../../services/carService";
-import { AuthContext } from "../../contexts/AuthContext";
+import * as carServices from "../../../services/carService";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function LikedItem({ _ownerId, likedCar }) {
     const { user } = useContext(AuthContext);

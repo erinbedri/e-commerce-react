@@ -7,6 +7,8 @@ export default function Weather() {
     const [long, setLong] = useState("");
     const [weatherData, setWeatherData] = useState({});
 
+    console.log("render");
+
     useEffect(() => {
         const fetchData = async () => {
             navigator.geolocation.getCurrentPosition(function (position) {

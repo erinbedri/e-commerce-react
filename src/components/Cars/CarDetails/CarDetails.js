@@ -36,15 +36,20 @@ export default function CarDetails() {
     }, []);
 
     useEffect(() => {
-        carService.getAllLikes(user._id).then((res) => {
-            const like = res.find((like) => like._ownerId === user._id && currentCar._id === like.likedCar);
-            if (like) {
-                setIsLiked(true);
-                setLikeId(like._id);
-            } else {
-                setIsLiked(false);
-            }
-        });
+        carService
+            .getAllLikes(user._id)
+            .then((res) => {
+                const like = res.find((like) => like._ownerId === user._id && currentCar._id === like.likedCar);
+                if (like) {
+                    setIsLiked(true);
+                    setLikeId(like._id);
+                } else {
+                    setIsLiked(false);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, [isLiked]);
 
     const likeHandler = () => {
@@ -56,11 +61,16 @@ export default function CarDetails() {
                 _ownerId: user._id,
                 likedCar: currentCar._id,
             };
-            carService.addLike(likeData).then((res) => {
-                if (res._id) {
-                    setIsLiked(true);
-                }
-            });
+            carService
+                .addLike(likeData)
+                .then((res) => {
+                    if (res._id) {
+                        setIsLiked(true);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     };
 

@@ -9,9 +9,14 @@ export default function LikedItem({ _ownerId, likedCar }) {
     const owner = user._id === car._ownerId;
 
     useEffect(() => {
-        carServices.getOne(likedCar).then((res) => {
-            setCar(res);
-        });
+        carServices
+            .getOne(likedCar)
+            .then((res) => {
+                setCar(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
     return (

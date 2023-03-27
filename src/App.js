@@ -17,7 +17,7 @@ import Register from "./components/Authentication/Register/Register";
 import Logout from "./components/Authentication/Logout/Logout";
 import Footer from "./components/common/Footer/Footer";
 import CarOwner from "./common/CarOwner";
-import Profile from "./components/common/Profile/Profile";
+import Profile from "./components/Authentication/Profile/Profile";
 import Favourites from "./components/Catalogs/Favourites/Favourites";
 import AuthenticatedUser from "./common/AuthenticatedUser";
 import NotFound from "./components/common/NotFound/NotFound";

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 import "./register.css";
 import * as authService from "../../../services/authService";
+import SectionTitle from "../../common/SectionTitle/SectionTitle";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -64,7 +65,8 @@ export default function Register() {
 
     return (
         <section id="register" className="container">
-            <h2 className="title">Sign Up</h2>
+            <SectionTitle title={"Sign Up"} />
+
             {error && <div className="error">{error}</div>}
 
             <form className="form" onSubmit={submitHandler}>
@@ -117,7 +119,7 @@ export default function Register() {
                 <span className="register-link">
                     Already registered?{" "}
                     <Link to="/login" className="link">
-                        Sign ip
+                        Sign in
                     </Link>{" "}
                     instead.
                 </span>

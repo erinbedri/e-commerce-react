@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./login.css";
 import * as authService from "../../../services/authService";
 import { AuthContext } from "../../../contexts/AuthContext";
+import SectionTitle from "../../common/SectionTitle/SectionTitle";
 
 export default function Login() {
     const { userLogin } = useContext(AuthContext);
@@ -48,7 +49,8 @@ export default function Login() {
 
     return (
         <section id="login" className="container">
-            <h2 className="title">Sign In</h2>
+            <SectionTitle title={"Sign In"} />
+
             {error && <div className="error">{error}</div>}
 
             <form className="form" onSubmit={submitHandler}>

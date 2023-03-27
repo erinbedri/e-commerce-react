@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "./profile.css";
 import { getUser } from "../../../services/userService";
+import SectionTitle from "../../common/SectionTitle/SectionTitle";
 
 export default function Profile() {
     const [userDetails, setUserDetails] = useState({});
@@ -20,7 +21,7 @@ export default function Profile() {
 
     return (
         <section className="container">
-            <h2 className="title">Profile</h2>
+            <SectionTitle title={"Profile"} />
 
             <div className="profile-details">
                 <i className="fa-solid fa-circle-user" />

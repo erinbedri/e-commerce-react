@@ -1,0 +1,21 @@
+describe("DESCRIBE TITLE TEXT", () => {
+    it("TEST BLOCK TITLE TEXT", async () => {
+        // 1) Render a component we want to test
+
+        // 2) Find the element we want to interact with
+
+        // 3) Interact with those elements
+
+        // 4) Assert that the results are as expected
+    });
+
+    it("TEST BLOCK TITLE TEXT", async () => {
+        // 1) Render a component we want to test
+
+        // 2) Find the element we want to interact with
+
+        // 3) Interact with those elements
+
+        // 4) Assert that the results are as expected
+    });
+});

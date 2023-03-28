@@ -48,9 +48,9 @@ export default function Favourites() {
                         <span>Price</span>
                         <span>Location</span>
                     </div>
-                    {favourites.map((c) => (
+                    {favourites.map((c, index) => (
                         <Link to={`/catalog/${c.likedCar}/details`} key={c._id} className="catalog-link">
-                            <LikedItem {...c} />
+                            <LikedItem {...c} dataTestId={`favourite-${index}`} />
                         </Link>
                     ))}
                 </div>

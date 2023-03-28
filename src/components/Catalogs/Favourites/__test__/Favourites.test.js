@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 
 import Favourites from "../Favourites";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import useLoading from "../../../../hooks/useLoading";
-import { BrowserRouter } from "react-router-dom";
+import carServices from "../../../../__mocks__/carServices";
 
 const user = {
     email: "test@abv.bg",

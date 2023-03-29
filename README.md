@@ -15,9 +15,10 @@ This project is currently in development. Users can:
 -   filter
 -   paginate
 
-## Project Screen Shot(s)
+## Project Screen Shots
 
 <img src="./src/images/screenshot1.JPG" alt="screenshot">
+<img src="./src/images/screenshot2.JPG" alt="screenshot">
 
 ## Installation and Setup Instructions
 

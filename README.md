@@ -17,23 +17,23 @@ This project is currently in development. Users can:
 
 ## Project Screen Shots
 
-#### Homepage
+#### Homepage --------------------------------------------------------
 
 <img src="./src/images/screenshot1.JPG" alt="screenshot">
 
-#### Catalog
+#### Catalog --------------------------------------------------------
 
 <img src="./src/images/screenshot2.JPG" alt="screenshot">
 
-#### Car Details
+#### Car Details --------------------------------------------------------
 
 <img src="./src/images/screenshot3.JPG" alt="screenshot">
 
-#### Add Car
+#### Add Car --------------------------------------------------------
 
 <img src="./src/images/screenshot4.JPG" alt="screenshot">
 
-#### Profile
+#### Profile --------------------------------------------------------
 
 <img src="./src/images/screenshot5.JPG" alt="screenshot">
 

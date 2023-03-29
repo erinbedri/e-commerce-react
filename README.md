@@ -17,7 +17,7 @@ This project is currently in development. Users can:
 
 ## Project Screen Shot(s)
 
-![screenshot]("./src/images/screenshot1.JPG")
+<img src="./src/images/screenshot1.JPG" alt="screenshot">
 
 ## Installation and Setup Instructions
 

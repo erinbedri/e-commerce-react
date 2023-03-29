@@ -17,7 +17,12 @@ This project is currently in development. Users can:
 
 ## Project Screen Shots
 
+#### Homepage
+
 <img src="./src/images/screenshot1.JPG" alt="screenshot">
+
+#### Catalog
+
 <img src="./src/images/screenshot2.JPG" alt="screenshot">
 
 ## Installation and Setup Instructions

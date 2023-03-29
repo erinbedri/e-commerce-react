@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import CarItem from "../../Cars/CarItem/CarItem";
+import CarItem from "../CarItem/CarItem";
 
 export default function CatalogList({ cars, handleSortBy }) {
     return (

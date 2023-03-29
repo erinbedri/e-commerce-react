@@ -6,11 +6,12 @@ import useLoading from "../../../hooks/useLoading";
 import Error from "../../common/Error/Error";
 import Search from "../Search/Search";
 import Pagination from "../Pagination/Pagination";
-import CatalogList from "../CatalogList/CatalogList";
+import CatalogList from "../../Cars/CarList/CarList";
 
 export default function Catalog() {
     const { isLoading, loading } = useLoading(true);
     const [isError, setIsError] = useState(false);
+
     const [cars, setCars] = useState([]);
 
     const [pageSize, setPageSize] = useState(5);

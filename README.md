@@ -37,6 +37,14 @@ This project is currently in development. Users can:
 
 <img src="./src/images/screenshot5.JPG" alt="screenshot">
 
+#### -------------------------------------------------------- Login --------------------------------------------------------
+
+<img src="./src/images/screenshot6.JPG" alt="screenshot">
+
+#### -------------------------------------------------------- Register --------------------------------------------------------
+
+<img src="./src/images/screenshot7.JPG" alt="screenshot">
+
 ## Installation and Setup Instructions
 
 #### Example:

@@ -47,8 +47,6 @@ This project is currently in development. Users can:
 
 ## Installation and Setup Instructions
 
-#### Example:
-
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
 Installation:
@@ -59,13 +57,17 @@ To Run Test Suite:
 
 `npm test`
 
-To Start Server:
+To Start Application:
 
 `npm start`
 
+To Start Server:
+
+`npm start-server`
+
 To Visit App:
 
-`localhost:3000/ideas`
+`localhost:3000/`
 
 ## Reflection
 

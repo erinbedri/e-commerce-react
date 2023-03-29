@@ -151,7 +151,7 @@ export default function Catalog() {
                 ) : (
                     <>
                         <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
-                            There are no cars in the cataloq right now!
+                            There are no cars in the catalog right now!
                         </h3>
                         <p style={{ textAlign: "center", marginTop: "1rem" }}>
                             <Link to={"/catalog/car/add"}>

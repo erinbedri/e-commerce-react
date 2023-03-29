@@ -21,7 +21,7 @@ const CarOwner = ({ children }) => {
             });
     }, []);
 
-    if (user.accessToken) {
+    if (user.accessToken && user._id === carId) {
         return children ? children : <Outlet />;
     }
     return <Navigate to={"/catalog"} replace />;

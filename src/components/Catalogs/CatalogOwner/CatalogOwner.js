@@ -42,5 +42,5 @@ export default function CatalogOwner() {
         return <Error />;
     }
 
-    return <CatalogList cars={cars} handleSortBy={handleSortBy} />;
+    return <CatalogList cars={cars} handleSortBy={handleSortBy} ownerStyle={false} />;
 }

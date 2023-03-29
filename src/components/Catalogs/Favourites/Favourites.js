@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-import LikedItem from "../../Cars/CarItem/LikedItem";
 import * as carServices from "../../../services/carService";
+import CarList from "../../Cars/CarList/CarList";
 import useLoading from "../../../hooks/useLoading";
 import Error from "../../common/Error/Error";
 
@@ -11,8 +10,12 @@ export default function Favourites() {
     const { isLoading, loading } = useLoading(true);
     const [isError, setIsError] = useState(false);
 
-    const { user } = useContext(AuthContext);
     const [favourites, setFavourites] = useState([]);
+
+    const { user } = useContext(AuthContext);
+
+    const [sortBy, setSortBy] = useState("manufacturer");
+    const [orderBy, setOrderBy] = useState("");
 
     useEffect(() => {
         carServices
@@ -26,6 +29,11 @@ export default function Favourites() {
             });
     }, []);
 
+    const handleSortBy = (e) => {
+        setSortBy(e.target.innerText.toLowerCase() || e.target.parentElement.innerText.toLowerCase());
+        setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
+    };
+
     if (isLoading) {
         return <div id="loader"></div>;
     }
@@ -34,39 +42,5 @@ export default function Favourites() {
         return <Error />;
     }
 
-    return (
-        <section id="catalog" className="container">
-            {favourites.length > 0 ? (
-                <div className="catalog-list">
-                    <div className="catalog-header">
-                        <span />
-                        <span>Manufacturer</span>
-                        <span>Model</span>
-                        <span>Category</span>
-                        <span>Mileage</span>
-                        <span>Year</span>
-                        <span>Price</span>
-                        <span>Location</span>
-                    </div>
-                    {favourites.map((c, index) => (
-                        <Link to={`/catalog/${c.likedCar}/details`} key={c._id} className="catalog-link">
-                            <LikedItem {...c} dataTestId={`favourite-${index}`} />
-                        </Link>
-                    ))}
-                </div>
-            ) : (
-                <>
-                    <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
-                        You have no cars in your favourites list!
-                    </h3>
-                    <p style={{ textAlign: "center", marginTop: "1rem" }}>
-                        <Link to={"/catalog"}>
-                            <b>Browse cars</b>
-                        </Link>{" "}
-                        now.
-                    </p>
-                </>
-            )}
-        </section>
-    );
+    return <CarList cars={favourites} handleSortBy={handleSortBy} likedItem={true} />;
 }

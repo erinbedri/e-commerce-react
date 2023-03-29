@@ -25,6 +25,18 @@ This project is currently in development. Users can:
 
 <img src="./src/images/screenshot2.JPG" alt="screenshot">
 
+#### Car Details
+
+<img src="./src/images/screenshot3.JPG" alt="screenshot">
+
+#### Add Car
+
+<img src="./src/images/screenshot4.JPG" alt="screenshot">
+
+#### Profile
+
+<img src="./src/images/screenshot5.JPG" alt="screenshot">
+
 ## Installation and Setup Instructions
 
 #### Example:

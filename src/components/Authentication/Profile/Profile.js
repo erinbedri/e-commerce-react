@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import "./profile.css";
-import userService from "../../../__mocks__/userService";
+import * as userService from "../../../services/userService";
 import SectionTitle from "../../common/SectionTitle/SectionTitle";
 
 export default function Profile() {

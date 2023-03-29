@@ -39,38 +39,3 @@
     cursor: pointer;
     background-color: var(--clr-text-backgroung);
 }
-
-/* PAGINATION */
-.pagination-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    margin-top: 2rem;
-}
-
-.pagination-controls i {
-    font-size: 1.15rem;
-}
-
-.pageSizeSelector {
-    border-radius: 1rem;
-    padding: 0.25rem 0.5rem;
-}
-
-/* SEARCH */
-.search {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 5rem;
-    margin-bottom: 1rem;
-}
-
-.search-input {
-    border-radius: 0.75rem;
-    border: 1px solid;
-    padding: 0.35rem;
-    text-indent: 0.5rem;
-    width: 250px;
-}

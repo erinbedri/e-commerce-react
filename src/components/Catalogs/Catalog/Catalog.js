@@ -6,6 +6,8 @@ import * as carService from "../../../services/carService";
 import CarItem from "../../Cars/CarItem/CarItem";
 import useLoading from "../../../hooks/useLoading";
 import Error from "../../common/Error/Error";
+import Search from "../Search/Search";
+import Pagination from "../Pagination/Pagination";
 
 export default function Catalog() {
     const { isLoading, loading } = useLoading(true);
@@ -110,18 +112,7 @@ export default function Catalog() {
 
     return (
         <>
-            <form className="search">
-                <div>
-                    <input
-                        type="search"
-                        name="search"
-                        className="search-input"
-                        placeholder="Search..."
-                        onChange={handleSearch}
-                    />
-                    <button type="submit" disabled style={{ display: "none" }} aria-hidden="true"></button>
-                </div>
-            </form>
+            <Search handleSearch={handleSearch} />
 
             <section id="catalog" className="container">
                 {cars.length > 0 ? (
@@ -171,33 +162,18 @@ export default function Catalog() {
                     </>
                 )}
 
-                <div className="pagination-controls">
-                    {showPreviousPageController && <i onClick={handleFirstPage} className="fa-solid fa-angles-left" />}
-                    {showPreviousPageController && (
-                        <i onClick={handlePreviousPage} className="fa-solid fa-chevron-left" />
-                    )}
-
-                    <h3>
-                        Page {currentPage} of {totalPages}
-                    </h3>
-
-                    {showNextPageController && <i onClick={handleNextPage} className="fa-solid fa-chevron-right" />}
-                    {showNextPageController && <i onClick={handleLastPage} className="fa-solid fa-angles-right" />}
-
-                    {currentPage == 1 && (
-                        <select
-                            name="pageSizeSelector"
-                            id="pageSizeSelector"
-                            className="pageSizeSelector"
-                            onChange={handlePageSelector}
-                            defaultValue={pageSize}
-                        >
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                        </select>
-                    )}
-                </div>
+                <Pagination
+                    handleFirstPage={handleFirstPage}
+                    handlePreviousPage={handlePreviousPage}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    showNextPageController={showNextPageController}
+                    showPreviousPageController={showPreviousPageController}
+                    handleNextPage={handleNextPage}
+                    handleLastPage={handleLastPage}
+                    handlePageSelector={handlePageSelector}
+                    pageSize={pageSize}
+                />
             </section>
         </>
     );

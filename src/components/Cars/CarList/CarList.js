@@ -25,12 +25,12 @@ export default function CatalogList({ cars, handleSortBy, likedItem }) {
                     {cars.map((c) => (
                         <>
                             {likedItem ? (
-                                <Link to={`/catalog/${c.likedCar}/details`} key={c.likedCar} className="catalog-link">
-                                    <LikedItem likedCar={c.likedCar} />
+                                <Link to={`/catalog/${c.likedCar}/details`} className="catalog-link">
+                                    <LikedItem likedCar={c.likedCar} key={c.likedCar} />
                                 </Link>
                             ) : (
-                                <Link to={`/catalog/${c._id}/details`} key={c._id} className="catalog-link">
-                                    <CarItem {...c} />
+                                <Link to={`/catalog/${c._id}/details`} className="catalog-link">
+                                    <CarItem {...c} key={c._id} />
                                 </Link>
                             )}
                         </>

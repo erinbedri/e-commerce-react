@@ -77,5 +77,7 @@ This project is part of the final evaluation for the ReactJS course (second cour
 ### Application Sructure
 
 The application has:
+
 • Public Part (Accessible without authentication) which gives access to landing page, user login, and user registration forms, as well as access to the general car catalog without disclosing user contact data.
+
 • Private Part (Available for Registered Users) which allows registered users to have personal area in the application accessible after successful login. The Private Part expands on the Public part by disclosing the contact data of owners who listed their cars for sale. Additionally, users have dedicated pages for their own cars and favourite cars. Registered users can mark cars as "favourites" and add/edit/delete car details.

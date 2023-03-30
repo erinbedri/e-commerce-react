@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import "./catalog.css";
+import "./catalog-main.css";
 import * as carService from "../../../services/carService";
 import useLoading from "../../../hooks/useLoading";
 import Error from "../../common/Error/Error";
@@ -8,7 +8,7 @@ import Search from "../Search/Search";
 import Pagination from "../Pagination/Pagination";
 import CatalogList from "../../Cars/CarList/CarList";
 
-export default function Catalog() {
+export default function CatalogMain() {
     const { isLoading, loading } = useLoading(true);
     const [isError, setIsError] = useState(false);
 

@@ -73,22 +73,44 @@ export default function Register() {
                 <label htmlFor="email">
                     <b>Email</b>
                 </label>
-                <input type="email" placeholder="Enter Email" name="email" onChange={changeHandler} required />
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter Email"
+                    name="email"
+                    onChange={changeHandler}
+                    required
+                />
 
                 <label htmlFor="fname">
                     <b>First Name</b>
                 </label>
-                <input type="text" placeholder="Enter First Name" name="fname" onChange={changeHandler} required />
+                <input
+                    id="fname"
+                    type="text"
+                    placeholder="Enter First Name"
+                    name="fname"
+                    onChange={changeHandler}
+                    required
+                />
 
                 <label htmlFor="lname">
                     <b>Last Name</b>
                 </label>
-                <input type="text" placeholder="Enter Last Name" name="lname" onChange={changeHandler} required />
+                <input
+                    id="lname"
+                    type="text"
+                    placeholder="Enter Last Name"
+                    name="lname"
+                    onChange={changeHandler}
+                    required
+                />
 
                 <label htmlFor="telNumber">
                     <b>Telephone Number</b>
                 </label>
                 <input
+                    id="telNumber"
                     type="text"
                     placeholder="Enter Telephone Number"
                     name="telNumber"
@@ -99,12 +121,20 @@ export default function Register() {
                 <label htmlFor="password">
                     <b>Password</b>
                 </label>
-                <input type="password" placeholder="Enter Password" name="password" onChange={changeHandler} required />
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter Password"
+                    name="password"
+                    onChange={changeHandler}
+                    required
+                />
 
                 <label htmlFor="repeatPassword">
                     <b>Confirm Password</b>
                 </label>
                 <input
+                    id="repeatPassword"
                     type="password"
                     placeholder="Confirm Password"
                     name="repeatPassword"

@@ -57,11 +57,27 @@ export default function Login() {
                 <label htmlFor="email">
                     <b>Email</b>
                 </label>
-                <input type="email" placeholder="Enter Email" name="email" onChange={changeHandler} required />
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={changeHandler}
+                    required
+                />
                 <label htmlFor="password">
                     <b>Password</b>
                 </label>
-                <input type="password" placeholder="Enter Password" name="password" onChange={changeHandler} required />
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={changeHandler}
+                    required
+                />
                 <button className="btn" type="submit">
                     Login
                 </button>

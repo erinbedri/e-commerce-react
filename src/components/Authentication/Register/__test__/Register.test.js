@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 
 import { AuthContext } from "../../../../contexts/AuthContext";
+import * as authService from "../../../../services/authService";
 import Register from "../Register";
 
 describe("Register", () => {
@@ -225,5 +226,32 @@ describe("Register", () => {
             expect(screen.getByLabelText("Confirm Password").value).toBe("");
             expect(screen.getByRole("button", { name: "Register" })).toHaveAttribute("disabled");
         });
+    });
+
+    it("should call register with authentication object on successful registration", async () => {
+        const authData = {
+            email: "ivan@abv.bg",
+            password: "123456",
+            fName: "Ivan",
+            lName: "Ivanov",
+            telNumber: "0049123456",
+        };
+
+        const registerMock = jest.spyOn(authService, "register");
+        registerMock.mockResolvedValueOnce(authData);
+
+        fireEvent.change(screen.getByLabelText(/email/i), { target: { value: "ivan@abv.bg" } });
+        fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: "Ivan" } });
+        fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: "Ivanov" } });
+        fireEvent.change(screen.getByLabelText(/telephone number/i), {
+            target: { value: "0049123456" },
+        });
+        fireEvent.change(screen.getByLabelText("Password"), { target: { value: "123456" } });
+        fireEvent.change(screen.getByLabelText("Confirm Password"), { target: { value: "123456" } });
+        fireEvent.click(screen.getByRole("button", { name: "Register" }));
+
+        await waitFor(() =>
+            expect(registerMock).toHaveBeenCalledWith("ivan@abv.bg", "123456", "Ivan", "Ivanov", "0049123456")
+        );
     });
 });

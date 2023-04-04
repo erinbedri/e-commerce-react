@@ -26,7 +26,7 @@ export default function Pagination({
             {showNextPageController && <i onClick={handleNextPage} className="fa-solid fa-chevron-right" />}
             {showNextPageController && <i onClick={handleLastPage} className="fa-solid fa-angles-right" />}
 
-            {currentPage == 1 && (
+            {currentPage === 1 && (
                 <select
                     name="pageSizeSelector"
                     id="pageSizeSelector"

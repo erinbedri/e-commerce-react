@@ -31,7 +31,7 @@ export default function Favourites() {
 
     const handleSortBy = (e) => {
         setSortBy(e.target.innerText.toLowerCase() || e.target.parentElement.innerText.toLowerCase());
-        setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
+        setOrderBy((oldOrderBy) => (oldOrderBy === "" ? "%20desc" : ""));
     };
 
     if (isLoading) {

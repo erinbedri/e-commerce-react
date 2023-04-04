@@ -31,8 +31,11 @@ export default function CatalogOwner() {
 
     const handleSortBy = (e) => {
         setSortBy(e.target.innerText.toLowerCase() || e.target.parentElement.innerText.toLowerCase());
-        setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
+        setOrderBy((oldOrderBy) => (oldOrderBy === "" ? "%20desc" : ""));
     };
+
+    console.log(cars);
+    console.log(user._id);
 
     if (isLoading) {
         return <div id="loader"></div>;

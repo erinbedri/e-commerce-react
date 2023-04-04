@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import * as carService from "../../../services/carService";
 
 export default function CarEdit() {
@@ -10,8 +9,6 @@ export default function CarEdit() {
     const params = useParams();
 
     const navigate = useNavigate();
-
-    const [auth, setAuth] = useLocalStorage("auth", {});
 
     const [currentCar, setCurrentCar] = useState({});
 

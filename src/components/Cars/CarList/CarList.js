@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CarItem from "../CarItem/CarItem";
 import LikedItem from "../CarItem/LikedItem";
 
-export default function CatalogList({ cars, handleSortBy, likedItem }) {
+export default function CarList({ cars, handleSortBy, likedItem }) {
     return (
         <section id="catalog" className="container">
             {cars.length > 0 ? (
@@ -26,7 +26,7 @@ export default function CatalogList({ cars, handleSortBy, likedItem }) {
                         <>
                             {likedItem ? (
                                 <Link to={`/catalog/${c.likedCar}/details`} className="catalog-link">
-                                    <LikedItem likedCar={c.likedCar} key={c.likedCar} />
+                                    <LikedItem likedCar={c.likedCar} key={c._id} />
                                 </Link>
                             ) : (
                                 <Link to={`/catalog/${c._id}/details`} className="catalog-link">

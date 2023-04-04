@@ -6,7 +6,7 @@ import useLoading from "../../../hooks/useLoading";
 import Error from "../../common/Error/Error";
 import Search from "../Search/Search";
 import Pagination from "../Pagination/Pagination";
-import CatalogList from "../../Cars/CarList/CarList";
+import CarList from "../../Cars/CarList/CarList";
 
 export default function CatalogMain() {
     const { isLoading, loading } = useLoading(true);
@@ -58,7 +58,7 @@ export default function CatalogMain() {
     }, [currentPage]);
 
     useEffect(() => {
-        if (currentPage == totalPages) {
+        if (currentPage === totalPages) {
             setShowNextPageController(false);
         } else {
             setShowNextPageController(true);
@@ -95,7 +95,7 @@ export default function CatalogMain() {
 
     const handleSortBy = (e) => {
         setSortBy(e.target.innerText.toLowerCase() || e.target.parentElement.innerText.toLowerCase());
-        setOrderBy((oldOrderBy) => (oldOrderBy == "" ? "%20desc" : ""));
+        setOrderBy((oldOrderBy) => (oldOrderBy === "" ? "%20desc" : ""));
     };
 
     const handleSearch = (e) => {
@@ -114,7 +114,7 @@ export default function CatalogMain() {
         <>
             <Search handleSearch={handleSearch} />
 
-            <CatalogList cars={cars} handleSortBy={handleSortBy} />
+            <CarList cars={cars} handleSortBy={handleSortBy} />
 
             {cars.length > 0 && (
                 <Pagination

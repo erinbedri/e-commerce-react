@@ -1337,7 +1337,7 @@
         users: {
             "35c62d76-8152-4626-8712-eeb96381bea8": {
                 email: "peter@abv.bg",
-                fname: "Peter",
+                fname: "Petar",
                 lname: "Petrov",
                 telNumber: "00359123654",
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
@@ -1452,8 +1452,8 @@
                 year: 2020,
                 price: 35000,
                 location: "Paris, FR",
-                fname: "Pierre",
-                lname: "Dupont",
+                fname: "Petar",
+                lname: "Petrov",
                 telNumber: "0033697415248",
                 imageUrl:
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/BMW-I3-Testfahrzeug.jpeg/1200px-BMW-I3-Testfahrzeug.jpeg",
@@ -1470,8 +1470,8 @@
                 year: 2022,
                 price: 28000,
                 location: "London, UK",
-                fname: "John",
-                lname: "Doe",
+                fname: "Petar",
+                lname: "Petrov",
                 telNumber: "00447598314512",
                 imageUrl:
                     "https://assets.adac.de/image/upload/ar_16:9,c_fill,f_auto,g_auto,q_auto:eco,w_1256/v1/Autodatenbank/Fahrzeugbilder/im05179-1-nissan-leaf.jpeg",
@@ -1488,8 +1488,8 @@
                 year: 2020,
                 price: 35000,
                 location: "Los Angeles, US",
-                fname: "John",
-                lname: "Doe",
+                fname: "Petar",
+                lname: "Petrov",
                 telNumber: "555-1234",
                 imageUrl: "https://www.gpas-cache.ford.com/guid/35b0f34d-0ff8-3e75-b278-3a38cb39a63d.png",
                 description:
@@ -1505,8 +1505,8 @@
                 year: 2021,
                 price: 80000,
                 location: "New York City, US",
-                fname: "John",
-                lname: "Doe",
+                fname: "Petar",
+                lname: "Petrov",
                 telNumber: "555-1234",
                 imageUrl:
                     "https://assets.adac.de/image/upload/c_scale,f_auto,q_auto,t_2:1-default,w_1500/v1/ADAC-eV/KOR/Bilder/PR/chevrolet-corvette-2020-seite-2002_yjjul2",
@@ -1523,8 +1523,8 @@
                 year: 2022,
                 price: 90000,
                 location: "San Francisco, US",
-                fname: "John",
-                lname: "Doe",
+                fname: "Petar",
+                lname: "Petrov",
                 telNumber: "555-1234",
                 imageUrl: "https://www.tesla.com/sites/default/files/modelsx-new/social/model-s-hero-social.jpg",
                 description:
@@ -1540,8 +1540,8 @@
                 year: 2021,
                 price: 120000,
                 location: "Miami, US",
-                fname: "John",
-                lname: "Doe",
+                fname: "Petar",
+                lname: "Petrov",
                 telNumber: "555-1234",
                 imageUrl: "https://cdn.motor1.com/images/mgl/ZnkLMA/s1/high-mileage-991.2-porsche-911-for-sale.jpg",
                 description:

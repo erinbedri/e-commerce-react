@@ -75,7 +75,7 @@ export default function CarEdit() {
     };
 
     return (
-        <section id="login" className="container">
+        <section id="car-add" className="container">
             <h2 className="title">Edit Car</h2>
             {error && [...new Set(error)].map((e) => <div className="error">{e}</div>)}
 

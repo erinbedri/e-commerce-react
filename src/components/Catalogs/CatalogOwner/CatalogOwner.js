@@ -34,9 +34,6 @@ export default function CatalogOwner() {
         setOrderBy((oldOrderBy) => (oldOrderBy === "" ? "%20desc" : ""));
     };
 
-    console.log(cars);
-    console.log(user._id);
-
     if (isLoading) {
         return <div id="loader"></div>;
     }

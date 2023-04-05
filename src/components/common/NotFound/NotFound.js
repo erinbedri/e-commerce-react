@@ -7,8 +7,6 @@ import { AuthContext } from "../../../contexts/AuthContext";
 export default function NotFound() {
     const { user } = useContext(AuthContext);
 
-    console.log(user);
-
     return (
         <section id="not-found" className="container">
             <h1>Oops! You seem to be lost.</h1>

@@ -42,5 +42,7 @@ export default function Favourites() {
         return <Error />;
     }
 
+    console.log(favourites);
+
     return <CarList cars={favourites} handleSortBy={handleSortBy} likedItem={true} />;
 }

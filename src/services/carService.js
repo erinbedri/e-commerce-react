@@ -4,6 +4,7 @@ const baseUrlCars = "http://localhost:3030/data/cars";
 const baseUrlLikes = "http://localhost:3030/data/likes";
 
 export const getAllLikes = (ownerId) => request.get(`${baseUrlLikes}?where=_ownerId%3D%22${ownerId}%22`);
+export const getAllLikesByCarId = (carId) => request.get(`${baseUrlLikes}?where=likedCar%3D%22${carId}%22`);
 
 export const addLike = (likeData) => request.post(`${baseUrlLikes}`, likeData);
 

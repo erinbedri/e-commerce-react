@@ -21,6 +21,9 @@ export default function CarDelete() {
                     setError(res.message);
                     return;
                 }
+                carService.getAllLikesByCarId(currentCar._id).then((likes) => {
+                    likes.map((like) => carService.deleteLike(like._id));
+                });
                 navigate("/");
             })
             .catch((error) => {
